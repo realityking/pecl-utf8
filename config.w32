@@ -1,0 +1,8 @@
+// $ Id: $
+// vim:ft=javascript
+
+ARG_ENABLE('utf8' , 'UTF-8', 'no');
+if (PHP_UTF8 == "yes") {
+  EXTENSION("utf8", "utf8.c");
+  AC_DEFINE("HAVE_UTF8", 1, "utf8 support");
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!DOCTYPE extension SYSTEM "../extension.dtd">
+<extension name="utf8" version="0.1.0">
+	<summary>UTF-8</summary>
+	<description>This extension implements some utility functions to work with UTF-8.</description>
+	<maintainers>
+		<maintainer>
+			<user>realityking</user>
+			<name>Rouven Weßling</name>
+			<email>me@rouvenwessling.de</email>
+			<role>lead</role>
+		</maintainer>
+	</maintainers>
+	<license>PHP</license>
+
+	<function name="utf8_is_valid">
+		<proto>bool utf8_is_valid(string str)</proto>
+	</function>
+
+	<function name="utf8_strlen">
+		<proto>int utf8_strlen(string str)</proto>
+	</function>
+
+	<function name="utf8_has_bom">
+		<proto>bool utf8_has_bom(string str)</proto>
+	</function>
+
+	<function name="utf8_strip_bom">
+		<proto>void utf8_strip_bom(string str)</proto>
+	</function>
+</extension>

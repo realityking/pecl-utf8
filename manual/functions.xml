@@ -1,0 +1,4 @@
+ &reference.utf8.functions.utf8-has-bom;
+ &reference.utf8.functions.utf8-is-valid;
+ &reference.utf8.functions.utf8-strip-bom;
+ &reference.utf8.functions.utf8-strlen;
