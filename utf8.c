@@ -108,7 +108,7 @@ PHP_FUNCTION(utf8_strlen)
 	count = utf8_strlen(str, &valid);
 
 	if (!valid) {
-		php_error(E_WARNING, "String does not contain valid UTF-8");
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "String does not contain valid UTF-8");
 		return;
 	}
 
@@ -135,7 +135,7 @@ PHP_FUNCTION(utf8_substr)
 	utf8_len = utf8_strlen(str, &valid);
 
 	if (!valid) {
-		php_error(E_WARNING, "String does not contain valid UTF-8");
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "String does not contain valid UTF-8");
 		RETURN_FALSE;
 	}
 
@@ -264,7 +264,7 @@ PHP_FUNCTION(utf8_ord)
 	codepoint = utf8_ord(str, &valid);
 
 	if (!valid) {
-		php_error(E_WARNING, "String does not contain valid UTF-8");
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "String does not contain valid UTF-8");
 		return;
 	}
 

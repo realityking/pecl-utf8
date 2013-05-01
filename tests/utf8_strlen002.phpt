@@ -11,5 +11,5 @@ if(!extension_loaded('utf8')) die('skip ');
 var_dump(utf8_strlen("Iñtërnâtiôn\xe9àlizætiøn"));
 ?>
 --EXPECTF--
-Warning: String does not contain valid UTF-8 in %s on line %d
+Warning: utf8_strlen(): String does not contain valid UTF-8 in %s on line %d
 NULL
