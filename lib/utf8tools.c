@@ -1,7 +1,6 @@
 #include "utf8tools.h"
 
 #include <string.h>
-#include "zend.h"
 
 /*
  * Copyright (c) 2008-2010 Bjoern Hoehrmann <bjoern@hoehrmann.de>
@@ -148,4 +147,25 @@ utf8_ord(uint8_t* s, int *valid) {
 	*valid = (state == UTF8_ACCEPT);
 
 	return codepoint;
+}
+
+int
+utf8_get_next_n_chars_length(uint8_t* s, int n, int *valid) {
+	uint32_t codepoint;
+	uint32_t state = UTF8_ACCEPT;
+	int bytes = 0;
+
+	for (int count = 0; *s; ++s) {
+		if (count == n) {
+			break;
+		}
+		if (!decode(&state, &codepoint, *s)) {
+			count += 1;
+		}
+		bytes += 1;
+	}
+
+	*valid = (state == UTF8_ACCEPT);
+
+	return bytes;
 }

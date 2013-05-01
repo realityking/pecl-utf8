@@ -23,6 +23,7 @@ function_entry utf8_functions[] = {
 	PHP_FE(utf8_is_valid       , utf8_is_valid_arg_info)
 	PHP_FE(utf8_strlen         , utf8_strlen_arg_info)
 	PHP_FE(utf8_substr         , utf8_substr_arg_info)
+	PHP_FE(utf8_str_split      , utf8_str_split_arg_info)
 	PHP_FE(utf8_ord            , utf8_ord_arg_info)
 	PHP_FE(utf8_has_bom        , utf8_has_bom_arg_info)
 	{ NULL, NULL, NULL }
@@ -178,7 +179,6 @@ PHP_FUNCTION(utf8_substr)
 	}
 
 	if (f >= utf8_len) {
-		php_error(E_WARNING, "Error 4: f = %d, utf8_len = %d", f, utf8_len);
 		RETURN_FALSE;
 	}
 
@@ -191,6 +191,64 @@ PHP_FUNCTION(utf8_substr)
 	RETURN_STRING(result, 0);
 }
 /* }}} utf8_substr */
+
+/* {{{ proto array utf8_str_split(string str [, int split_length])
+   */
+PHP_FUNCTION(utf8_str_split)
+{
+	char *str;
+	int str_len;
+	size_t utf8_len;
+	long split_length = 1;
+	int valid = 0;
+	int n_reg_segments;
+	char *p;
+	int bytes;
+
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s|l", &str, &str_len, &split_length) == FAILURE) {
+		return;
+	}
+
+	if (split_length <= 0) {
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "The length of each segment must be greater than zero");
+		return;
+	}
+
+	utf8_len = utf8_strlen(str, &valid);
+
+	if (!valid) {
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "String does not contain valid UTF-8");
+		RETURN_FALSE;
+	}
+
+	array_init_size(return_value, ((utf8_len - 1) / split_length) + 1);
+
+	if (split_length >= utf8_len) {
+		add_next_index_stringl(return_value, str, str_len, 1);
+		return;
+	}
+
+	n_reg_segments = utf8_len / split_length;
+	p = str;
+
+	while (n_reg_segments-- > 0) {
+		bytes = utf8_get_next_n_chars_length(p, split_length, &valid);
+		add_next_index_stringl(return_value, p, bytes, 1);
+		p += bytes;
+	}
+
+	if (p != (str + str_len)) {
+		add_next_index_stringl(return_value, p, (str + str_len - p), 1);
+	}
+
+	/* array_ptr = utf8_str_split_intern(str, split_length, utf8_len, &valid);
+
+	if (!valid) {
+		php_error(E_WARNING, "String does not contain valid UTF-8");
+		RETURN_FALSE;
+	} */
+}
+/* }}} utf8_str_split */
 
 /* {{{ proto int utf8_ord(string str)
    */
