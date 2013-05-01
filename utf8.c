@@ -241,13 +241,6 @@ PHP_FUNCTION(utf8_str_split)
 	if (p != (str + str_len)) {
 		add_next_index_stringl(return_value, p, (str + str_len - p), 1);
 	}
-
-	/* array_ptr = utf8_str_split_intern(str, split_length, utf8_len, &valid);
-
-	if (!valid) {
-		php_error(E_WARNING, "String does not contain valid UTF-8");
-		RETURN_FALSE;
-	} */
 }
 /* }}} utf8_str_split */
 
