@@ -92,6 +92,11 @@ ZEND_BEGIN_ARG_INFO_EX(utf8_has_bom_arg_info, ZEND_SEND_BY_VAL, ZEND_RETURN_VALU
   ZEND_ARG_INFO(0, str)
 ZEND_END_ARG_INFO()
 
+PHP_FUNCTION(string_is_ascii);
+ZEND_BEGIN_ARG_INFO_EX(string_is_ascii_arg_info, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+  ZEND_ARG_INFO(0, str)
+ZEND_END_ARG_INFO()
+
 #ifdef  __cplusplus
 } // extern "C"
 #endif

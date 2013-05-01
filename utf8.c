@@ -26,6 +26,7 @@ function_entry utf8_functions[] = {
 	PHP_FE(utf8_str_split      , utf8_str_split_arg_info)
 	PHP_FE(utf8_ord            , utf8_ord_arg_info)
 	PHP_FE(utf8_has_bom        , utf8_has_bom_arg_info)
+	PHP_FE(string_is_ascii     , string_is_ascii_arg_info)
 	{ NULL, NULL, NULL }
 };
 /* }}} */
@@ -295,6 +296,30 @@ PHP_FUNCTION(utf8_has_bom)
 	RETURN_BOOL(result);
 }
 /* }}} utf8_has_bom */
+
+/* {{{ proto bool string_is_ascii(string str)
+   */
+PHP_FUNCTION(string_is_ascii)
+{
+	const char *str = NULL;
+	int i;
+	int str_len = 0;
+	int tmp;
+
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
+		return;
+	}
+
+	for (i = 0; i < str_len; i++) {
+		tmp = (unsigned char) str[i];
+		if (tmp > 127) {
+			RETURN_FALSE;
+		}
+	}
+
+	RETURN_TRUE;
+}
+/* }}} string_is_ascii */
 
 #endif /* HAVE_UTF8 */
 
