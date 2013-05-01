@@ -10,3 +10,4 @@ int utf8_is_valid(uint8_t* s);
 size_t utf8_strlen(uint8_t* s, int *valid);
 int utf8_has_bom(uint8_t *s);
 char* utf8_substr(uint8_t* s, int start, int len, int *valid);
+uint32_t utf8_ord(uint8_t* s, int *valid);

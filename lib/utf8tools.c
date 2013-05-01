@@ -135,3 +135,17 @@ utf8_substr(uint8_t *s, int start, int len, int *valid) {
 
 	return out;
 }
+
+uint32_t
+utf8_ord(uint8_t* s, int *valid) {
+	uint32_t codepoint;
+	uint32_t state = UTF8_ACCEPT;
+
+	for (; *s; ++s)
+		if (!decode(&state, &codepoint, *s))
+			break;
+
+	*valid = (state == UTF8_ACCEPT);
+
+	return codepoint;
+}

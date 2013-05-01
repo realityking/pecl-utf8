@@ -23,6 +23,7 @@ function_entry utf8_functions[] = {
 	PHP_FE(utf8_is_valid       , utf8_is_valid_arg_info)
 	PHP_FE(utf8_strlen         , utf8_strlen_arg_info)
 	PHP_FE(utf8_substr         , utf8_substr_arg_info)
+	PHP_FE(utf8_ord            , utf8_ord_arg_info)
 	PHP_FE(utf8_has_bom        , utf8_has_bom_arg_info)
 	{ NULL, NULL, NULL }
 };
@@ -190,6 +191,34 @@ PHP_FUNCTION(utf8_substr)
 	RETURN_STRING(result, 0);
 }
 /* }}} utf8_substr */
+
+/* {{{ proto int utf8_ord(string str)
+   */
+PHP_FUNCTION(utf8_ord)
+{
+	unsigned char *str = NULL;
+	int str_len = 0;
+	int valid = 0;
+	uint32_t codepoint;
+
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
+		return;
+	}
+
+	if (str_len == 0) {
+		RETURN_LONG(0);
+	}
+
+	codepoint = utf8_ord(str, &valid);
+
+	if (!valid) {
+		php_error(E_WARNING, "String does not contain valid UTF-8");
+		return;
+	}
+
+	RETURN_LONG(codepoint);
+}
+/* }}} utf8_ord */
 
 /* {{{ proto bool utf8_has_bom(string str)
    */
