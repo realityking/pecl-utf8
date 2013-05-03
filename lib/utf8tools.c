@@ -36,7 +36,8 @@ static const uint8_t utf8d[] = {
 };
 
 uint32_t inline
-decode(uint32_t* state, uint32_t* codep, uint32_t byte) {
+decode(uint32_t* state, uint32_t* codep, uint32_t byte)
+{
   uint32_t type = utf8d[byte];
 
   *codep = (*state != UTF8_ACCEPT) ?
@@ -48,7 +49,8 @@ decode(uint32_t* state, uint32_t* codep, uint32_t byte) {
 }
 
 size_t
-utf8_strlen(uint8_t* s, int *valid) {
+utf8_strlen(uint8_t* s, int *valid)
+{
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
 	size_t count;
@@ -117,7 +119,8 @@ static inline const char* utf8_encode(uint32_t codepoint, char* str)
  * License: PHP License 3.01
  */
 int
-utf8_is_valid(uint8_t* s) {
+utf8_is_valid(uint8_t* s)
+{
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
 
@@ -128,7 +131,8 @@ utf8_is_valid(uint8_t* s) {
 }
 
 char*
-utf8_substr(uint8_t *s, int start, int len, int *valid) {
+utf8_substr(uint8_t *s, int start, int len, int *valid)
+{
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
 	int start_bytes = 0;
@@ -166,7 +170,8 @@ utf8_substr(uint8_t *s, int start, int len, int *valid) {
 }
 
 uint32_t
-utf8_ord(uint8_t* s, int *valid) {
+utf8_ord(uint8_t* s, int *valid)
+{
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
 
@@ -180,7 +185,8 @@ utf8_ord(uint8_t* s, int *valid) {
 }
 
 int
-utf8_get_next_n_chars_length(uint8_t* s, int n, int *valid) {
+utf8_get_next_n_chars_length(uint8_t* s, int n, int *valid)
+{
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
 	int bytes = 0;
