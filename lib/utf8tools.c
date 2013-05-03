@@ -223,8 +223,8 @@ char*
 utf8_recover(uint8_t* s, int length_bytes)
 {
 	uint32_t codepoint;
-	uint32_t state = UTF8_ACCEPT;
-	int prev, current;
+	uint32_t prev, current;
+	int i;
 	char *out, *begin;
 
 	/* There's probably a way to save some memory here */
@@ -232,10 +232,14 @@ utf8_recover(uint8_t* s, int length_bytes)
 
 	begin = out;
 
-	for (prev = 0, current = 0; *s; prev = current, ++s) {
+	for (prev = 0, current = 0, i = 0; i <= length_bytes; prev = current, s++, i++) {
+
 		switch (decode(&current, &codepoint, *s)) {
 			case UTF8_ACCEPT:
-				out = utf8_encode(codepoint, out);
+				/* Confirm that this doesn't cause other issues */
+				if (codepoint != 0x0000) {
+					out = utf8_encode(codepoint, out);
+				}
 				break;
 			case UTF8_REJECT:
 				out[0] = 0xef;
@@ -245,6 +249,7 @@ utf8_recover(uint8_t* s, int length_bytes)
 				current = UTF8_ACCEPT;
 				if (prev != UTF8_ACCEPT) {
 					s--;
+					i--;
 				}
 				break;
 		}
