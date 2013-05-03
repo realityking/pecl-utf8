@@ -83,6 +83,36 @@ utf8_has_bom(uint8_t *s)
 }
 
 /*
+ * Author: Mikko Lehtonen
+ * See: https://github.com/scoopr/wtf8/blob/master/wtf8.h
+ */
+static inline const char* utf8_encode(uint32_t codepoint, char* str)
+{
+	unsigned char* ustr = (unsigned char*)str;
+	if (codepoint <= 0x7f) {
+		ustr[0] = (unsigned char)codepoint;
+		ustr+=1;
+	} else if (codepoint <= 0x7ff ) {
+		ustr[0] = (unsigned char) (0xc0 + (codepoint >> 6));
+		ustr[1] = (unsigned char) (0x80 + (codepoint & 0x3f));
+		ustr+=2;
+	} else if (codepoint <= 0xffff) {
+		ustr[0] = (unsigned char) (0xe0 + (codepoint >> 12));
+		ustr[1] = (unsigned char) (0x80 + ((codepoint >> 6) & 63));
+		ustr[2] = (unsigned char) (0x80 + (codepoint & 63));
+		ustr+=3;
+	} else if (codepoint <= 0x1ffff) {
+		ustr[0] = (unsigned char) (0xf0 + (codepoint >> 18));
+		ustr[1] = (unsigned char) (0x80 + ((codepoint >> 12) & 0x3f));
+		ustr[2] = (unsigned char) (0x80 + ((codepoint >> 6) & 0x3f));
+		ustr[3] = (unsigned char) (0x80 + (codepoint & 0x3f));
+		ustr+=4;
+	}
+
+	return (char*)ustr;
+}
+
+/*
  * Author: Rouven Weßling
  * License: PHP License 3.01
  */
@@ -168,4 +198,41 @@ utf8_get_next_n_chars_length(uint8_t* s, int n, int *valid) {
 	*valid = (state == UTF8_ACCEPT);
 
 	return bytes;
+}
+
+
+char*
+utf8_recover(uint8_t* s, int length_bytes)
+{
+	uint32_t codepoint;
+	uint32_t state = UTF8_ACCEPT;
+	int prev, current;
+	char *out, *begin;
+
+	/* There's probably a way to save some memory here */
+	out = ecalloc(3 * length_bytes, sizeof(char));
+
+	begin = out;
+
+	for (prev = 0, current = 0; *s; prev = current, ++s) {
+		switch (decode(&current, &codepoint, *s)) {
+			case UTF8_ACCEPT:
+				out = utf8_encode(codepoint, out);
+				break;
+			case UTF8_REJECT:
+				out[0] = 0xef;
+				out[1] = 0xbf;
+				out[2] = 0xbd;
+				out+=3;
+				current = UTF8_ACCEPT;
+				if (prev != UTF8_ACCEPT) {
+					s--;
+				}
+				break;
+		}
+	}
+
+	out[0] = '\0';
+
+	return begin;
 }

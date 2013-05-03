@@ -25,6 +25,7 @@ function_entry utf8_functions[] = {
 	PHP_FE(utf8_substr         , utf8_substr_arg_info)
 	PHP_FE(utf8_str_split      , utf8_str_split_arg_info)
 	PHP_FE(utf8_ord            , utf8_ord_arg_info)
+	PHP_FE(utf8_recover        , utf8_recover_arg_info)
 	PHP_FE(utf8_has_bom        , utf8_has_bom_arg_info)
 	PHP_FE(string_is_ascii     , string_is_ascii_arg_info)
 	{ NULL, NULL, NULL }
@@ -243,6 +244,24 @@ PHP_FUNCTION(utf8_str_split)
 	}
 }
 /* }}} utf8_str_split */
+
+/* {{{ proto string utf8_recover(string str)
+   */
+PHP_FUNCTION(utf8_recover)
+{
+	unsigned char *str = NULL;
+	int str_len = 0;
+	char *result = NULL;
+
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
+		return;
+	}
+
+	result = utf8_recover(str, str_len);
+
+	RETURN_STRING(result, 0);
+}
+/* }}} utf8_recover */
 
 /* {{{ proto int utf8_ord(string str)
    */
