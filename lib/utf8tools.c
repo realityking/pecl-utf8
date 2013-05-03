@@ -200,6 +200,18 @@ utf8_get_next_n_chars_length(uint8_t* s, int n, int *valid) {
 	return bytes;
 }
 
+char*
+utf8_char_from_codepoint(uint32_t codepoint)
+{
+	char *out, *begin;
+
+	out = ecalloc(5, sizeof(char));
+	begin = out;
+	out = utf8_encode(codepoint, out);
+	out[0] = '\0';
+
+	return begin;
+}
 
 char*
 utf8_recover(uint8_t* s, int length_bytes)
