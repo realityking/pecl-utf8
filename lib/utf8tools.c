@@ -119,13 +119,18 @@ static inline const char* utf8_encode(uint32_t codepoint, char* str)
  * License: PHP License 3.01
  */
 int
-utf8_is_valid(uint8_t* s)
+utf8_is_valid(uint8_t* s, int length_bytes)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
+	int i;
 
-	for (; *s; ++s)
-		decode(&state, &codepoint, *s);
+	for (i = 0; i <= length_bytes; i++) {
+		decode(&state, &codepoint, *s++);
+		if (state == UTF8_REJECT) {
+			return 0;
+		}
+	}
 
 	return state == UTF8_ACCEPT;
 }

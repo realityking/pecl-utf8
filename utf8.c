@@ -83,7 +83,7 @@ PHP_FUNCTION(utf8_is_valid)
 		RETURN_TRUE;
 	}
 
-	valid = utf8_is_valid(str);
+	valid = utf8_is_valid(str, str_len);
 
 	RETURN_BOOL(valid);
 }
