@@ -290,3 +290,26 @@ utf8_strrev(char *str, long str_len)
         }
     }
 }
+
+size_t
+utf8_strlen_maxbytes(uint8_t* s, long max_bytes, int *valid)
+{
+	uint32_t codepoint;
+	uint32_t state = UTF8_ACCEPT;
+	size_t count;
+	int bytes;
+
+	for (bytes = 0, count = 0; *s; ++s) {
+		if (bytes == max_bytes) {
+			break;
+		}
+		if (!decode(&state, &codepoint, *s)) {
+			count += 1;
+		}
+		bytes += 1;
+	}
+
+	*valid = (state == UTF8_ACCEPT);
+
+	return count;
+}

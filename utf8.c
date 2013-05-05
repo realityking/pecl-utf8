@@ -23,6 +23,7 @@ function_entry utf8_functions[] = {
 	PHP_FE(utf8_is_valid       , utf8_is_valid_arg_info)
 	PHP_FE(utf8_strlen         , utf8_strlen_arg_info)
 	PHP_FE(utf8_substr         , utf8_substr_arg_info)
+	PHP_FE(utf8_strpos         , utf8_strpos_arg_info)
 	PHP_FE(utf8_str_split      , utf8_str_split_arg_info)
 	PHP_FE(utf8_strrev         , utf8_strrev_arg_info)
 	PHP_FE(utf8_chr            , utf8_chr_arg_info)
@@ -67,6 +68,30 @@ PHP_MINFO_FUNCTION(utf8)
 }
 /* }}} */
 
+/* {{{ utf8_needle_char
+ */
+static int utf8_needle_char(zval *needle, char **target TSRMLS_DC)
+{
+	switch (Z_TYPE_P(needle)) {
+		case IS_LONG:
+		case IS_BOOL:
+			*target = utf8_char_from_codepoint((uint32_t)Z_LVAL_P(needle));
+			return SUCCESS;
+		case IS_NULL:
+			*target = ecalloc(1, sizeof(char));
+			*target[0] = '\0';
+			return SUCCESS;
+		case IS_DOUBLE:
+			*target = utf8_char_from_codepoint((uint32_t)Z_DVAL_P(needle));
+			return SUCCESS;
+		/* I don't know what the IS_OBJECT code that was here in the PHP version is supposed to do */
+		default: {
+			php_error_docref(NULL TSRMLS_CC, E_WARNING, "needle is not a string or an integer");
+			return FAILURE;
+		 }
+	}
+}
+/* }}} */
 
 /* {{{ proto bool utf8_is_valid(string str)
    */
@@ -195,6 +220,88 @@ PHP_FUNCTION(utf8_substr)
 	RETURN_STRING(result, 0);
 }
 /* }}} utf8_substr */
+
+/* {{{ proto int utf8_strpos(string $haystack , mixed $needle [, int $offset = 0])
+   */
+PHP_FUNCTION(utf8_strpos)
+{
+	zval *needle;
+	char *haystack;
+	char *found = NULL;
+	char *needle_char;
+	char *needle_char_begin;
+	long  offset = 0;
+	long  offset_bytes = 0;
+	int   haystack_len;
+	int   haystack_utf8_len, needle_utf8_len;
+	int   valid;
+	long  tmp_result = 0;
+
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sz|l", &haystack, &haystack_len, &needle, &offset) == FAILURE) {
+		return;
+	}
+
+	haystack_utf8_len = utf8_strlen(haystack, &valid);
+
+	if (!valid) {
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Haystack does not contain valid UTF-8");
+		return;
+	}
+
+	if (offset < 0 || offset > haystack_utf8_len) {
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Offset not contained in string");
+		RETURN_FALSE;
+	}
+
+	if (offset != 0) {
+		offset_bytes = utf8_get_next_n_chars_length(haystack, offset, &valid);
+	}
+
+	if (Z_TYPE_P(needle) == IS_STRING) {
+		if (!Z_STRLEN_P(needle)) {
+			php_error_docref(NULL TSRMLS_CC, E_WARNING, "Empty needle");
+			RETURN_FALSE;
+		}
+
+		needle_utf8_len = utf8_strlen(Z_STRVAL_P(needle), &valid);
+
+		if (!valid) {
+			php_error_docref(NULL TSRMLS_CC, E_WARNING, "Needle does not contain valid UTF-8");
+			return;
+		}
+
+		found = php_memnstr(haystack + offset_bytes,
+			                Z_STRVAL_P(needle),
+			                Z_STRLEN_P(needle),
+			                haystack + haystack_len);
+	} else {
+		needle_char_begin = needle;
+		if (utf8_needle_char(needle, &needle_char TSRMLS_CC) != SUCCESS) {
+			RETURN_FALSE;
+		}
+
+		found = php_memnstr(haystack + offset_bytes,
+							needle_char,
+							strlen(needle_char),
+		                    haystack + haystack_len);
+
+		efree(needle_char);
+	}
+
+	if (found) {
+		tmp_result = utf8_strlen_maxbytes(haystack, found - haystack, &valid);
+
+		if (!valid) {
+			php_error_docref(NULL TSRMLS_CC, E_RECOVERABLE_ERROR, "Could not calculate result.");
+			return;
+		}
+
+		RETURN_LONG(tmp_result);
+	} else {
+		RETURN_FALSE;
+	}
+}
+/* }}} utf8_str_split */
 
 /* {{{ proto array utf8_str_split(string str [, int split_length])
    */
