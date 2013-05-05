@@ -415,7 +415,7 @@ PHP_FUNCTION(utf8_chr)
 
 	RETURN_STRING(string, 0);
 }
-/* }}} utf8_ord */
+/* }}} utf8_chr */
 
 /* {{{ proto int utf8_ord(string str)
    */
