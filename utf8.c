@@ -350,7 +350,7 @@ PHP_FUNCTION(utf8_has_bom)
 		return;
 	}
 
-	result = utf8_has_bom(str);
+	result = utf8_has_bom(str, str_len);
 
 	RETURN_BOOL(result);
 }

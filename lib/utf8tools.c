@@ -70,10 +70,10 @@ utf8_strlen(uint8_t* s, int *valid)
 #define UTF8_BOM "\xEF\xBB\xBF" /* note that it need to be casted to uint8_t* */
 
 int
-utf8_has_bom(uint8_t *s)
+utf8_has_bom(uint8_t *s, int str_len)
 {
 	uint8_t maybe_bom[4];
-	if (strlen(s) <= 2)
+	if (str_len <= 2)
 		return 0;
 
 	strncpy(maybe_bom, s, 3);
