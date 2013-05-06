@@ -358,7 +358,7 @@ PHP_FUNCTION(utf8_str_split)
    */
 PHP_FUNCTION(utf8_strrev)
 {
-	char *str;
+	char *str, *result;
 	int str_len, valid;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
@@ -376,9 +376,12 @@ PHP_FUNCTION(utf8_strrev)
 		RETURN_FALSE;
 	}
 
-	utf8_strrev(str, str_len);
+	result = emalloc((str_len + 1) * sizeof(char));
+	utf8_strrev(str, str_len, result);
 
-	RETURN_STRINGL(str, str_len, 1);
+	/* FIXME: This is a memory leak
+		result is never freed */
+	RETURN_STRINGL(result, str_len, 1);
 }
 /* }}} utf8_strrev */
 

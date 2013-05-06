@@ -266,17 +266,20 @@ utf8_recover(uint8_t* s, int length_bytes)
 }
 
 void
-utf8_strrev(char *str, long str_len)
+utf8_strrev(const char *str, long str_len, char *target)
 {
 	/* this assumes that str is valid UTF-8 */
 	char *scanl, *scanr, *scanr2, c;
+	int i;
 
-	/* first reverse the string */
-	for (scanl= str, scanr= str + str_len; scanl < scanr;)
-		c= *scanl, *scanl++= *--scanr, *scanr= c;
+	/* first reverse the string into the target */
+	for (i = 0, scanr = str + str_len; i < str_len; ++i) {
+		target[i] = *--scanr;
+	}
+	target[i+1] = '\0';
 
     /* then scan all bytes and reverse each multibyte character */
-    for (scanl= scanr= str; c= *scanr++;) {
+    for (scanl= scanr= target; c= *scanr++;) {
         if ( (c & 0x80) == 0) // ASCII char
             scanl= scanr;
         else if ( (c & 0xc0) == 0xc0 ) { // start of multibyte

@@ -15,4 +15,4 @@ uint32_t utf8_ord(uint8_t* s, int *valid);
 int utf8_get_next_n_chars_length(uint8_t* s, int n, int *valid);
 char* utf8_recover(uint8_t* s, int length_bytes);
 char* utf8_char_from_codepoint(uint32_t codepoint);
-void utf8_strrev(char *str, long str_len);
+void utf8_strrev(const char *str, long str_len, char *target);
