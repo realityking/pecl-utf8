@@ -229,7 +229,6 @@ PHP_FUNCTION(utf8_strpos)
 	char *haystack;
 	char *found = NULL;
 	char *needle_char;
-	char *needle_char_begin;
 	long  offset = 0;
 	long  offset_bytes = 0;
 	int   haystack_len;
@@ -241,7 +240,7 @@ PHP_FUNCTION(utf8_strpos)
 		return;
 	}
 
-	haystack_utf8_len = utf8_strlen(haystack, &valid);
+	haystack_utf8_len = utf8_strlen((uint8_t*)haystack, &valid);
 
 	if (!valid) {
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Haystack does not contain valid UTF-8");
@@ -254,7 +253,7 @@ PHP_FUNCTION(utf8_strpos)
 	}
 
 	if (offset != 0) {
-		offset_bytes = utf8_get_next_n_chars_length(haystack, offset, &valid);
+		offset_bytes = utf8_get_next_n_chars_length((uint8_t*)haystack, offset, &valid);
 	}
 
 	if (Z_TYPE_P(needle) == IS_STRING) {
@@ -263,7 +262,7 @@ PHP_FUNCTION(utf8_strpos)
 			RETURN_FALSE;
 		}
 
-		needle_utf8_len = utf8_strlen(Z_STRVAL_P(needle), &valid);
+		needle_utf8_len = utf8_strlen((uint8_t*)Z_STRVAL_P(needle), &valid);
 
 		if (!valid) {
 			php_error_docref(NULL TSRMLS_CC, E_WARNING, "Needle does not contain valid UTF-8");
@@ -275,7 +274,6 @@ PHP_FUNCTION(utf8_strpos)
 			                Z_STRLEN_P(needle),
 			                haystack + haystack_len);
 	} else {
-		needle_char_begin = needle;
 		if (utf8_needle_char(needle, &needle_char TSRMLS_CC) != SUCCESS) {
 			RETURN_FALSE;
 		}
@@ -289,7 +287,7 @@ PHP_FUNCTION(utf8_strpos)
 	}
 
 	if (found) {
-		tmp_result = utf8_strlen_maxbytes(haystack, found - haystack, &valid);
+		tmp_result = utf8_strlen_maxbytes((uint8_t*)haystack, found - haystack, &valid);
 
 		if (!valid) {
 			php_error_docref(NULL TSRMLS_CC, E_RECOVERABLE_ERROR, "Could not calculate result.");
@@ -325,7 +323,7 @@ PHP_FUNCTION(utf8_str_split)
 		return;
 	}
 
-	utf8_len = utf8_strlen(str, &valid);
+	utf8_len = utf8_strlen((uint8_t*)str, &valid);
 
 	if (!valid) {
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "String does not contain valid UTF-8");
@@ -343,7 +341,7 @@ PHP_FUNCTION(utf8_str_split)
 	p = str;
 
 	while (n_reg_segments-- > 0) {
-		bytes = utf8_get_next_n_chars_length(p, split_length, &valid);
+		bytes = utf8_get_next_n_chars_length((uint8_t*)p, split_length, &valid);
 		add_next_index_stringl(return_value, p, bytes, 1);
 		p += bytes;
 	}
@@ -369,7 +367,7 @@ PHP_FUNCTION(utf8_strrev)
 		RETURN_STRINGL(str, str_len, 1);
 	}
 
-	valid = utf8_is_valid(str, str_len);
+	valid = utf8_is_valid((uint8_t*)str, str_len);
 
 	if (!valid) {
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "String does not contain valid UTF-8");
@@ -452,7 +450,7 @@ PHP_FUNCTION(utf8_ord)
    */
 PHP_FUNCTION(utf8_has_bom)
 {
-	const char *str = NULL;
+	char *str = NULL;
 	int str_len = 0;
 	int result = 0;
 
@@ -460,7 +458,7 @@ PHP_FUNCTION(utf8_has_bom)
 		return;
 	}
 
-	result = utf8_has_bom(str, str_len);
+	result = utf8_has_bom((uint8_t*)str, str_len);
 
 	RETURN_BOOL(result);
 }

@@ -49,7 +49,7 @@ decode(uint32_t* state, uint32_t* codep, uint32_t byte)
 }
 
 size_t
-utf8_strlen(uint8_t* s, int *valid)
+utf8_strlen(const uint8_t* s, int *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
@@ -70,15 +70,15 @@ utf8_strlen(uint8_t* s, int *valid)
 #define UTF8_BOM "\xEF\xBB\xBF" /* note that it need to be casted to uint8_t* */
 
 int
-utf8_has_bom(uint8_t *s, int str_len)
+utf8_has_bom(const uint8_t *s, int str_len)
 {
 	uint8_t maybe_bom[4];
 	if (str_len <= 2)
 		return 0;
 
-	strncpy(maybe_bom, s, 3);
+	strncpy((char*)maybe_bom, (char*)s, 3);
 	maybe_bom[3] = 0;
-	if (strcmp(maybe_bom, (uint8_t*)UTF8_BOM) == 0)
+	if (strcmp((char*)maybe_bom, (char*)(uint8_t*)UTF8_BOM) == 0)
 		return 1;
 	else
 		return 0;
@@ -88,7 +88,7 @@ utf8_has_bom(uint8_t *s, int str_len)
  * Author: Mikko Lehtonen
  * See: https://github.com/scoopr/wtf8/blob/master/wtf8.h
  */
-static inline const char* utf8_encode(uint32_t codepoint, char* str)
+static inline char* utf8_encode(uint32_t codepoint, char* str)
 {
 	unsigned char* ustr = (unsigned char*)str;
 	if (codepoint <= 0x7f) {
@@ -119,7 +119,7 @@ static inline const char* utf8_encode(uint32_t codepoint, char* str)
  * License: PHP License 3.01
  */
 int
-utf8_is_valid(uint8_t* s, int length_bytes)
+utf8_is_valid(const uint8_t* s, int length_bytes)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
@@ -136,13 +136,13 @@ utf8_is_valid(uint8_t* s, int length_bytes)
 }
 
 char*
-utf8_substr(uint8_t *s, int start, int len, int *valid)
+utf8_substr(const uint8_t *s, int start, int len, int *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
 	int start_bytes = 0;
 	int length_bytes = 0;
-	uint8_t *str_start = s;
+	const uint8_t *str_start = s;
 	char *out;
 
 	for (int count = 0; *s; ++s) {
@@ -175,7 +175,7 @@ utf8_substr(uint8_t *s, int start, int len, int *valid)
 }
 
 uint32_t
-utf8_ord(uint8_t* s, int *valid)
+utf8_ord(const uint8_t* s, int *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
@@ -190,7 +190,7 @@ utf8_ord(uint8_t* s, int *valid)
 }
 
 int
-utf8_get_next_n_chars_length(uint8_t* s, int n, int *valid)
+utf8_get_next_n_chars_length(const uint8_t* s, int n, int *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
@@ -225,7 +225,7 @@ utf8_char_from_codepoint(uint32_t codepoint)
 }
 
 char*
-utf8_recover(uint8_t* s, int length_bytes)
+utf8_recover(const uint8_t* s, int length_bytes)
 {
 	uint32_t codepoint;
 	uint32_t prev, current;
@@ -279,7 +279,7 @@ utf8_strrev(const char *str, long str_len, char *target)
 	target[i+1] = '\0';
 
     /* then scan all bytes and reverse each multibyte character */
-    for (scanl= scanr= target; c= *scanr++;) {
+    for (scanl = scanr = target; (c = *scanr++);) {
         if ( (c & 0x80) == 0) // ASCII char
             scanl= scanr;
         else if ( (c & 0xc0) == 0xc0 ) { // start of multibyte
@@ -295,7 +295,7 @@ utf8_strrev(const char *str, long str_len, char *target)
 }
 
 size_t
-utf8_strlen_maxbytes(uint8_t* s, long max_bytes, int *valid)
+utf8_strlen_maxbytes(const uint8_t* s, long max_bytes, int *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
