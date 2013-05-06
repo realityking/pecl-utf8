@@ -232,7 +232,7 @@ PHP_FUNCTION(utf8_strpos)
 	long  offset = 0;
 	long  offset_bytes = 0;
 	int   haystack_len;
-	int   haystack_utf8_len, needle_utf8_len;
+	int   haystack_utf8_len;
 	int   valid;
 	long  tmp_result = 0;
 
@@ -262,7 +262,7 @@ PHP_FUNCTION(utf8_strpos)
 			RETURN_FALSE;
 		}
 
-		needle_utf8_len = utf8_strlen((uint8_t*)Z_STRVAL_P(needle), &valid);
+		valid = utf8_is_valid((uint8_t*)Z_STRVAL_P(needle), Z_STRLEN_P(needle));
 
 		if (!valid) {
 			php_error_docref(NULL TSRMLS_CC, E_WARNING, "Needle does not contain valid UTF-8");
