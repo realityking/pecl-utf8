@@ -479,7 +479,7 @@ PHP_FUNCTION(string_is_ascii)
 
 	for (i = 0; i < str_len; i++) {
 		tmp = (unsigned char) str[i];
-		if (tmp > 127) {
+		if (tmp > 0x7f) {
 			RETURN_FALSE;
 		}
 	}
