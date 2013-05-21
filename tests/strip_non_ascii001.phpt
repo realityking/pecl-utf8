@@ -1,5 +1,5 @@
 --TEST--
-string_is_ascii() function valid empty string
+strip_non_ascii() function empty string
 --SKIPIF--
 <?php
 
@@ -8,7 +8,7 @@ if(!extension_loaded('utf8')) die('skip ');
  ?>
 --FILE--
 <?php
-var_dump(string_is_ascii(''));
+var_dump(strip_non_ascii(''));
 ?>
 --EXPECT--
-bool(true)
+string(0) ""

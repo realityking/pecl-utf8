@@ -1,5 +1,5 @@
 --TEST--
-utf8_is_valid() function valid UTF-8 string
+string_is_ascii() function valid UTF-8 string
 --SKIPIF--
 <?php
 

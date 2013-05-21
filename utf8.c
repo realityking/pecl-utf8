@@ -32,6 +32,7 @@ function_entry utf8_functions[] = {
 	PHP_FE(utf8_recover        , utf8_recover_arg_info)
 	PHP_FE(utf8_has_bom        , utf8_has_bom_arg_info)
 	PHP_FE(string_is_ascii     , string_is_ascii_arg_info)
+	PHP_FE(strip_non_ascii     , strip_non_ascii_arg_info)
 	{ NULL, NULL, NULL }
 };
 /* }}} */
@@ -605,18 +606,15 @@ PHP_FUNCTION(utf8_has_bom)
    */
 PHP_FUNCTION(string_is_ascii)
 {
-	const char *str = NULL;
-	int i;
+	char *str = NULL;
 	int str_len = 0;
-	int tmp;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
 		return;
 	}
 
-	for (i = 0; i < str_len; i++) {
-		tmp = (unsigned char) str[i];
-		if (tmp > 0x7f) {
+	while (*str) {
+		if ((unsigned char)*str++ > 0x7f) {
 			RETURN_FALSE;
 		}
 	}
@@ -624,6 +622,41 @@ PHP_FUNCTION(string_is_ascii)
 	RETURN_TRUE;
 }
 /* }}} string_is_ascii */
+
+/* {{{ proto bool strip_non_ascii(string str)
+   */
+PHP_FUNCTION(strip_non_ascii)
+{
+	char *str, *result, *begin;
+	int str_len = 0, result_len = 0;
+
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
+		return;
+	}
+
+	if (str_len == 0) {
+		RETURN_STRINGL(str, 0, 1);
+	}
+
+	result = (char*) emalloc((str_len + 1) * sizeof(char));
+	begin = result;
+
+	while (*str) {
+		if ((unsigned char)*str <= 0x7f) {
+			*result++ = *str;
+			result_len++;
+		}
+		*str++;
+	}
+	*result = '\0';
+
+	if (result_len != str_len) {
+		begin = (char*) erealloc(begin, (result_len + 1) * sizeof(char));
+	}
+
+	RETURN_STRINGL(begin, result_len, 0);
+}
+/* }}} strip_non_ascii */
 
 #endif /* HAVE_UTF8 */
 
