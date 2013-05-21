@@ -376,9 +376,8 @@ PHP_FUNCTION(utf8_strrpos)
 		if (needle_len > -offset_bytes) {
 			e = haystack + haystack_len - needle_len;
 		} else {
-			e = haystack + haystack_len + offset_bytes;
+			e = haystack + haystack_len + offset_bytes - 1;
 		}
-		e--;
 	}
 
 	if (needle_len == 1) {
