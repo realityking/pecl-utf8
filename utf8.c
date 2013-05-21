@@ -24,6 +24,7 @@ function_entry utf8_functions[] = {
 	PHP_FE(utf8_strlen         , utf8_strlen_arg_info)
 	PHP_FE(utf8_substr         , utf8_substr_arg_info)
 	PHP_FE(utf8_strpos         , utf8_strpos_arg_info)
+	PHP_FE(utf8_strrpos        , utf8_strrpos_arg_info)
 	PHP_FE(utf8_str_split      , utf8_str_split_arg_info)
 	PHP_FE(utf8_strrev         , utf8_strrev_arg_info)
 	PHP_FE(utf8_chr            , utf8_chr_arg_info)
@@ -295,11 +296,127 @@ PHP_FUNCTION(utf8_strpos)
 		}
 
 		RETURN_LONG(tmp_result);
-	} else {
+	}
+
+	RETURN_FALSE;
+}
+/* }}} utf8_str_strpos */
+
+/* {{{ proto int utf8_strpos(string $haystack , mixed $needle [, int $offset = 0])
+   */
+PHP_FUNCTION(utf8_strrpos)
+{
+	zval *zneedle;
+	char *needle, *haystack;
+	int needle_len, haystack_len;
+	long offset = 0;
+	char *p, *e;
+	int haystack_utf8_len, valid, offset_bytes = 0;
+	char* found;
+	long  tmp_result = 0;
+
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sz|l", &haystack, &haystack_len, &zneedle, &offset) == FAILURE) {
 		RETURN_FALSE;
 	}
+
+	haystack_utf8_len = utf8_strlen((uint8_t*)haystack, &valid);
+
+	if (!valid) {
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Haystack does not contain valid UTF-8");
+		return;
+	}
+
+	if (offset >= 0) {
+		if (offset > haystack_utf8_len) {
+			php_error_docref(NULL TSRMLS_CC, E_WARNING, "Offset is greater than the length of haystack string");
+			RETURN_FALSE;
+		}
+	} else {
+		if (offset < -INT_MAX || -offset > haystack_utf8_len) {
+			php_error_docref(NULL TSRMLS_CC, E_WARNING, "Offset is greater than the length of haystack string");
+			RETURN_FALSE;
+		}
+	}
+
+	if (Z_TYPE_P(zneedle) == IS_STRING) {
+		needle = Z_STRVAL_P(zneedle);
+		needle_len = Z_STRLEN_P(zneedle);
+
+		valid = utf8_is_valid((uint8_t*)needle, needle_len);
+
+		if (!valid) {
+			php_error_docref(NULL TSRMLS_CC, E_WARNING, "Needle does not contain valid UTF-8");
+			return;
+		}
+	} else {
+		if (utf8_needle_char(zneedle, &needle TSRMLS_CC) != SUCCESS) {
+			RETURN_FALSE;
+		}
+
+		needle_len = strlen(needle);
+	}
+
+	if ((haystack_len == 0) || (needle_len == 0)) {
+		RETURN_FALSE;
+	}
+
+	if (offset >= 0) {
+		if (offset != 0) {
+			offset_bytes = utf8_get_next_n_chars_length((uint8_t*)haystack, offset, &valid);
+		}
+
+		p = haystack + offset_bytes;
+		e = haystack + haystack_len - needle_len;
+	} else {
+		offset_bytes = utf8_get_next_n_chars_length((uint8_t*)haystack, haystack_utf8_len + offset, &valid);
+		offset_bytes = (haystack_len - offset_bytes) * -1;
+
+		p = haystack;
+		if (needle_len > -offset_bytes) {
+			e = haystack + haystack_len - needle_len;
+		} else {
+			e = haystack + haystack_len + offset_bytes;
+		}
+		e--;
+	}
+
+	if (needle_len == 1) {
+		/* Single character search can shortcut memcmps */
+		while (e >= p) {
+			if (*e == *needle) {
+				found = e;
+				break;
+			}
+			e--;
+		}
+	} else {
+		while (e >= p) {
+			if (memcmp(e, needle, needle_len) == 0) {
+				found = e;
+				break;
+			}
+			e--;
+		}
+	}
+
+	if (found) {
+		tmp_result = utf8_strlen_maxbytes((uint8_t*)haystack, found - p + (offset > 0 ? offset_bytes : 0), &valid);
+
+		if (!valid) {
+			php_error_docref(NULL TSRMLS_CC, E_RECOVERABLE_ERROR, "Could not calculate result.");
+			return;
+		}
+
+		RETVAL_LONG(tmp_result);
+	} else {
+		RETVAL_FALSE;
+	}
+
+	if (Z_TYPE_P(zneedle) != IS_STRING) {
+		efree(needle);
+	}
 }
-/* }}} utf8_str_split */
+/* }}} utf8_str_strrpos */
 
 /* {{{ proto array utf8_str_split(string str [, int split_length])
    */
