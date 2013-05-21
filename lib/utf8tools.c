@@ -269,28 +269,25 @@ utf8_recover(const uint8_t *s, int length_bytes)
 }
 
 void
-utf8_strrev(char *str, long str_len, char *target)
+utf8_strrev(char *str, long str_len)
 {
-	/* this assumes that str is valid UTF-8 */
-	char *scanl, *scanr, *scanr2, c;
-	int   i;
+    /* this assumes that str is valid UTF-8 */
+    char *scanl, *scanr, *scanr2, c;
 
-	/* first reverse the string into the target */
-	for (i = 0, scanr = str + str_len; i < str_len; ++i) {
-		target[i] = *--scanr;
-	}
-	target[i+1] = '\0';
+    /* first reverse the string */
+    for (scanl= str, scanr= str + str_len; scanl < scanr;)
+        c= *scanl, *scanl++= *--scanr, *scanr= c;
 
     /* then scan all bytes and reverse each multibyte character */
-    for (scanl = scanr = target; (c = *scanr++);) {
+    for (scanl = scanr = str; (c = *scanr++);) {
         if ( (c & 0x80) == 0) // ASCII char
-            scanl= scanr;
+            scanl = scanr;
         else if ( (c & 0xc0) == 0xc0 ) { // start of multibyte
-            scanr2= scanr;
+            scanr2 = scanr;
             switch (scanr - scanl) {
-                case 4: c= *scanl, *scanl++= *--scanr, *scanr= c; // fallthrough
+                case 4: c = *scanl, *scanl++ = *--scanr, *scanr = c; // fallthrough
                 case 3: // fallthrough
-                case 2: c= *scanl, *scanl++= *--scanr, *scanr= c;
+                case 2: c = *scanl, *scanl++ = *--scanr, *scanr = c;
             }
             scanr= scanl= scanr2;
         }

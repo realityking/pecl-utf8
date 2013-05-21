@@ -375,11 +375,11 @@ PHP_FUNCTION(utf8_strrev)
 	}
 
 	result = emalloc((str_len + 1) * sizeof(char));
-	utf8_strrev(str, str_len, result);
+	strcpy(result, str);
 
-	/* FIXME: This is a memory leak
-		result is never freed */
-	RETURN_STRINGL(result, str_len, 1);
+	utf8_strrev(result, str_len);
+
+	RETURN_STRINGL(result, str_len, 0);
 }
 /* }}} utf8_strrev */
 
