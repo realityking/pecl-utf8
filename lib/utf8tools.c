@@ -233,7 +233,7 @@ utf8_recover(const uint8_t* s, int length_bytes)
 	char *out, *begin;
 
 	/* There's probably a way to save some memory here */
-	out = ecalloc(3 * length_bytes, sizeof(char));
+	out = (char*) emalloc(3 * length_bytes * sizeof(unsigned char));
 
 	begin = out;
 
@@ -261,6 +261,8 @@ utf8_recover(const uint8_t* s, int length_bytes)
 	}
 
 	out[0] = '\0';
+
+	begin = (char*) erealloc(begin, (strlen(begin) + 1) * sizeof(char));
 
 	return begin;
 }
