@@ -266,7 +266,7 @@ utf8_recover(const uint8_t* s, int length_bytes)
 }
 
 void
-utf8_strrev(const char *str, long str_len, char *target)
+utf8_strrev(char *str, long str_len, char *target)
 {
 	/* this assumes that str is valid UTF-8 */
 	char *scanl, *scanr, *scanr2, c;
