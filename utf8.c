@@ -357,6 +357,7 @@ PHP_FUNCTION(utf8_str_split)
 PHP_FUNCTION(utf8_strrev)
 {
 	char *str, *result;
+	char *scanl, *scanr, *scanr2, c;
 	int   str_len, valid;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
@@ -367,6 +368,7 @@ PHP_FUNCTION(utf8_strrev)
 		RETURN_STRINGL(str, str_len, 1);
 	}
 
+	/* This code assumes that str is valid UTF-8 so we check */
 	valid = utf8_is_valid((uint8_t*)str, str_len);
 
 	if (!valid) {
@@ -375,9 +377,27 @@ PHP_FUNCTION(utf8_strrev)
 	}
 
 	result = emalloc((str_len + 1) * sizeof(char));
+	/* We reverse the string in memory so we copy it beforehand */
 	strcpy(result, str);
 
-	utf8_strrev(result, str_len);
+    /* first reverse the string */
+    for (scanl = result, scanr= result + str_len; scanl < scanr;)
+        c= *scanl, *scanl++= *--scanr, *scanr= c;
+
+    /* then scan all bytes and reverse each multibyte character */
+    for (scanl = scanr = result; (c = *scanr++);) {
+        if ( (c & 0x80) == 0) // ASCII char
+            scanl = scanr;
+        else if ( (c & 0xc0) == 0xc0 ) { // start of multibyte
+            scanr2 = scanr;
+            switch (scanr - scanl) {
+                case 4: c = *scanl, *scanl++ = *--scanr, *scanr = c; // fallthrough
+                case 3: // fallthrough
+                case 2: c = *scanl, *scanl++ = *--scanr, *scanr = c;
+            }
+            scanr= scanl= scanr2;
+        }
+    }
 
 	RETURN_STRINGL(result, str_len, 0);
 }
