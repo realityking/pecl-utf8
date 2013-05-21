@@ -121,8 +121,8 @@ PHP_FUNCTION(utf8_is_valid)
 PHP_FUNCTION(utf8_strlen)
 {
 	unsigned char *str = NULL;
-	int str_len = 0;
-	int valid = 0;
+	int    str_len = 0;
+	int    valid = 0;
 	size_t count;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
@@ -150,11 +150,11 @@ PHP_FUNCTION(utf8_substr)
 {
 	unsigned char *str = NULL;
 	char *result = NULL;
-	int str_len = 0;
-	int utf8_len = 0;
-	int valid = 0;
-	long l = 0, f;
-	int argc = ZEND_NUM_ARGS();
+	int   str_len = 0;
+	int   utf8_len = 0;
+	int   valid = 0;
+	long  l = 0, f;
+	int   argc = ZEND_NUM_ARGS();
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sl|l", &str, &str_len, &f, &l) == FAILURE) {
 		return;
@@ -305,14 +305,14 @@ PHP_FUNCTION(utf8_strpos)
    */
 PHP_FUNCTION(utf8_str_split)
 {
-	char *str;
-	int str_len;
+	char  *str;
+	int    str_len;
 	size_t utf8_len;
-	long split_length = 1;
-	int valid = 0;
-	int n_reg_segments;
-	char *p;
-	int bytes;
+	long   split_length = 1;
+	int    valid = 0;
+	int    n_reg_segments;
+	char  *p;
+	int    bytes;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s|l", &str, &str_len, &split_length) == FAILURE) {
 		return;
@@ -357,7 +357,7 @@ PHP_FUNCTION(utf8_str_split)
 PHP_FUNCTION(utf8_strrev)
 {
 	char *str, *result;
-	int str_len, valid;
+	int   str_len, valid;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
 		return;
@@ -388,7 +388,7 @@ PHP_FUNCTION(utf8_strrev)
 PHP_FUNCTION(utf8_recover)
 {
 	unsigned char *str = NULL;
-	int str_len = 0;
+	int   str_len = 0;
 	char *result = NULL;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
@@ -405,7 +405,7 @@ PHP_FUNCTION(utf8_recover)
    */
 PHP_FUNCTION(utf8_chr)
 {
-	long c;
+	long  c;
 	char* string;
 
 	if (zend_parse_parameters_ex(ZEND_PARSE_PARAMS_QUIET, ZEND_NUM_ARGS() TSRMLS_CC, "l", &c) == FAILURE) {
@@ -423,8 +423,8 @@ PHP_FUNCTION(utf8_chr)
 PHP_FUNCTION(utf8_ord)
 {
 	unsigned char *str = NULL;
-	int str_len = 0;
-	int valid = 0;
+	int      str_len = 0;
+	int      valid = 0;
 	uint32_t codepoint;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
@@ -451,8 +451,8 @@ PHP_FUNCTION(utf8_ord)
 PHP_FUNCTION(utf8_has_bom)
 {
 	char *str = NULL;
-	int str_len = 0;
-	int result = 0;
+	int   str_len = 0;
+	int   result = 0;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
 		return;

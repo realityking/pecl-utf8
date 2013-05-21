@@ -36,7 +36,7 @@ static const uint8_t utf8d[] = {
 };
 
 uint32_t inline
-decode(uint32_t* state, uint32_t* codep, uint32_t byte)
+decode(uint32_t *state, uint32_t *codep, uint32_t byte)
 {
 	uint32_t type = utf8d[byte];
 
@@ -49,11 +49,11 @@ decode(uint32_t* state, uint32_t* codep, uint32_t byte)
 }
 
 size_t
-utf8_strlen(const uint8_t* s, int *valid)
+utf8_strlen(const uint8_t *s, int *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
-	size_t count;
+	size_t   count;
 
 	for (count = 0; *s; ++s)
 		if (!decode(&state, &codepoint, *s))
@@ -73,6 +73,7 @@ int
 utf8_has_bom(const uint8_t *s, int str_len)
 {
 	uint8_t maybe_bom[4];
+
 	if (str_len <= 2)
 		return 0;
 
@@ -88,9 +89,9 @@ utf8_has_bom(const uint8_t *s, int str_len)
  * Author: Mikko Lehtonen
  * See: https://github.com/scoopr/wtf8/blob/master/wtf8.h
  */
-static inline char* utf8_encode(uint32_t codepoint, char* str)
+static inline char* utf8_encode(uint32_t codepoint, char *str)
 {
-	unsigned char* ustr = (unsigned char*)str;
+	unsigned char *ustr = (unsigned char*)str;
 	if (codepoint <= 0x7f) {
 		ustr[0] = (unsigned char)codepoint;
 		ustr+=1;
@@ -119,11 +120,11 @@ static inline char* utf8_encode(uint32_t codepoint, char* str)
  * License: PHP License 3.01
  */
 int
-utf8_is_valid(const uint8_t* s, int length_bytes)
+utf8_is_valid(const uint8_t *s, int length_bytes)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
-	int i;
+	int      i;
 
 	for (i = 0; i <= length_bytes; i++) {
 		decode(&state, &codepoint, *s++);
@@ -175,7 +176,7 @@ utf8_substr(const uint8_t *s, int start, int len, int *valid)
 }
 
 uint32_t
-utf8_ord(const uint8_t* s, int *valid)
+utf8_ord(const uint8_t *s, int *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
@@ -190,11 +191,11 @@ utf8_ord(const uint8_t* s, int *valid)
 }
 
 int
-utf8_get_next_n_chars_length(const uint8_t* s, int n, int *valid)
+utf8_get_next_n_chars_length(const uint8_t *s, int n, int *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
-	int bytes = 0;
+	int      bytes = 0;
 
 	for (int count = 0; *s; ++s) {
 		if (count == n) {
@@ -225,12 +226,12 @@ utf8_char_from_codepoint(uint32_t codepoint)
 }
 
 char*
-utf8_recover(const uint8_t* s, int length_bytes)
+utf8_recover(const uint8_t *s, int length_bytes)
 {
 	uint32_t codepoint;
 	uint32_t prev, current;
-	int i;
-	char *out, *begin;
+	int      i;
+	char    *out, *begin;
 
 	/* There's probably a way to save some memory here */
 	out = (char*) emalloc(3 * length_bytes * sizeof(unsigned char));
@@ -272,7 +273,7 @@ utf8_strrev(char *str, long str_len, char *target)
 {
 	/* this assumes that str is valid UTF-8 */
 	char *scanl, *scanr, *scanr2, c;
-	int i;
+	int   i;
 
 	/* first reverse the string into the target */
 	for (i = 0, scanr = str + str_len; i < str_len; ++i) {
@@ -297,12 +298,12 @@ utf8_strrev(char *str, long str_len, char *target)
 }
 
 size_t
-utf8_strlen_maxbytes(const uint8_t* s, long max_bytes, int *valid)
+utf8_strlen_maxbytes(const uint8_t *s, long max_bytes, int *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
-	size_t count;
-	int bytes;
+	size_t   count;
+	int      bytes;
 
 	for (bytes = 0, count = 0; *s; ++s) {
 		if (bytes == max_bytes) {
