@@ -663,8 +663,9 @@ PHP_FUNCTION(strip_non_ascii)
    */
 PHP_FUNCTION(utf8_encode2)
 {
-	char *str, *result;
+	char *str;
 	int str_len = 0, result_len = 0;
+	uint8_t *result;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
 		return;
@@ -672,7 +673,7 @@ PHP_FUNCTION(utf8_encode2)
 
 	windows1252_to_utf8(str, str_len, &result, &result_len);
 
-	RETURN_STRINGL(result, result_len, 0);
+	RETURN_STRINGL((char*)result, result_len, 0);
 }
 /* }}} utf8_encode2 */
 
@@ -680,7 +681,8 @@ PHP_FUNCTION(utf8_encode2)
    */
 PHP_FUNCTION(utf8_decode2)
 {
-	char *str, *result;
+	unsigned char *str;
+	char *result;
 	int str_len = 0, result_len = 0;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {

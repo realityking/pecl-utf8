@@ -323,7 +323,7 @@ windows1252_to_utf8(const char *str, int str_len, uint8_t **result_str, int *res
 			// These are undefined so we just do nothing.
 		} else if (*ustr < 0xa0) {
 			codepoint = windows1252Codepoint[*ustr - 0x80];
-			result = utf8_encode(codepoint, result, &codepoint_len);
+			result = (uint8_t*) utf8_encode(codepoint, (char*) result, &codepoint_len);
 			*result_len += codepoint_len;
 		} else {
 			*result++ = 0xc2 + (*ustr > 0xbf);
@@ -415,7 +415,6 @@ utf8_to_windows1252(const uint8_t *str, int str_len, char **result_str, int *res
 	uint32_t state = UTF8_ACCEPT;
 	unsigned char *result, *begin;
 
-
 	*result_len = 0;
 	result = (unsigned char*) emalloc((str_len + 1) * sizeof(unsigned char));
 	begin = result;
@@ -443,5 +442,5 @@ utf8_to_windows1252(const uint8_t *str, int str_len, char **result_str, int *res
 		begin = (unsigned char*) erealloc(begin, (*result_len + 1) * sizeof(unsigned char));
 	}
 
-	*result_str = begin;
+	*result_str = (char*) begin;
 }
