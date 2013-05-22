@@ -17,3 +17,4 @@ char* utf8_recover(const uint8_t *s, int length_bytes);
 char* utf8_char_from_codepoint(uint32_t codepoint);
 size_t utf8_strlen_maxbytes(const uint8_t *s, long max_bytes, int *valid);
 void windows1252_to_utf8(const char* str, int str_len, uint8_t **result_str, int *result_len);
+void utf8_to_windows1252(const uint8_t *str, int str_len, char **result_str, int *result_len);

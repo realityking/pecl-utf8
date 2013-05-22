@@ -34,6 +34,7 @@ function_entry utf8_functions[] = {
 	PHP_FE(string_is_ascii     , string_is_ascii_arg_info)
 	PHP_FE(strip_non_ascii     , strip_non_ascii_arg_info)
 	PHP_FE(utf8_encode2        , utf8_encode2_arg_info)
+	PHP_FE(utf8_decode2        , utf8_decode2_arg_info)
 	{ NULL, NULL, NULL }
 };
 /* }}} */
@@ -674,6 +675,23 @@ PHP_FUNCTION(utf8_encode2)
 	RETURN_STRINGL(result, result_len, 0);
 }
 /* }}} utf8_encode2 */
+
+/* {{{ proto string utf8_decode2(string str)
+   */
+PHP_FUNCTION(utf8_decode2)
+{
+	char *str, *result;
+	int str_len = 0, result_len = 0;
+
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
+		return;
+	}
+
+	utf8_to_windows1252(str, str_len, &result, &result_len);
+
+	RETURN_STRINGL(result, result_len, 0);
+}
+/* }}} utf8_decode2 */
 
 #endif /* HAVE_UTF8 */
 

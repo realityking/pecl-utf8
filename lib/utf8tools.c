@@ -304,7 +304,7 @@ static const uint32_t windows1252Codepoint[] = {
 };
 
 void
-windows1252_to_utf8(const char* str, int str_len, uint8_t **result_str, int *result_len)
+windows1252_to_utf8(const char *str, int str_len, uint8_t **result_str, int *result_len)
 {
 	uint8_t *result, *begin;
 	uint32_t codepoint;
@@ -336,6 +336,111 @@ windows1252_to_utf8(const char* str, int str_len, uint8_t **result_str, int *res
 
 	if (*result_len != str_len) {
 		begin = (uint8_t*) erealloc(begin, (*result_len + 1) * sizeof(uint8_t));
+	}
+
+	*result_str = begin;
+}
+
+static inline unsigned char to_windows1252(uint32_t codepoint)
+{
+	switch (codepoint) {
+		case 0x20ac:
+			return 0x80;
+		// 0x81 is undefined
+		case 0x201a:
+			return 0x82;
+		case 0x0192:
+			return 0x83;
+		case 0x201e:
+			return 0x84;
+		case 0x2026:
+			return 0x85;
+		case 0x2020:
+			return 0x86;
+		case 0x2021:
+			return 0x87;
+		case 0x02c6:
+			return 0x88;
+		case 0x2030:
+			return 0x89;
+		case 0x0160:
+			return 0x8a;
+		case 0x2039:
+			return 0x8b;
+		case 0x0152:
+			return 0x8c;
+		// 0x8d is undefined
+		case 0x017d:
+			return 0x8e;
+		// 0x8f is undefined
+		// 0x90 is undefined
+		case 0x2018:
+			return 0x91;
+		case 0x2019:
+			return 0x92;
+		case 0x201c:
+			return 0x93;
+		case 0x201d:
+			return 0x94;
+		case 0x2022:
+			return 0x95;
+		case 0x2013:
+			return 0x96;
+		case 0x2014:
+			return 0x97;
+		case 0x02dc:
+			return 0x98;
+		case 0x2122:
+			return 0x99;
+		case 0x0161:
+			return 0x9a;
+		case 0x203a:
+			return 0x9b;
+		case 0x0153:
+			return 0x9c;
+		// 0x9d is undefined
+		case 0x017e:
+			return 0x9e;
+		case 0x0178:
+			return 0x9f;
+		default:
+			return 0x3f;
+	}
+}
+
+void
+utf8_to_windows1252(const uint8_t *str, int str_len, char **result_str, int *result_len)
+{
+	uint32_t codepoint;
+	uint32_t state = UTF8_ACCEPT;
+	unsigned char *result, *begin;
+
+
+	*result_len = 0;
+	result = (unsigned char*) emalloc((str_len + 1) * sizeof(unsigned char));
+	begin = result;
+
+	for (; *str; ++str) {
+		if (!decode(&state, &codepoint, *str)) {
+			if (codepoint <= 0x7f || (codepoint >= 0xa0 && codepoint <= 0xff)) {
+				*result++ = (unsigned char) codepoint;
+				*result_len += 1;
+			} else {
+				*result++ = to_windows1252(codepoint);
+				*result_len += 1;
+			}
+		} else if (state == UTF8_REJECT) {
+			// Invalid code point. Substitute with a ?
+			*result++ = 0x3f;
+			*result_len += 1;
+			// Reset to UTF8_ACCEPT since we've recovered
+			state = UTF8_ACCEPT;
+		}
+	}
+	*result = '\0';
+
+	if (*result_len != str_len) {
+		begin = (unsigned char*) erealloc(begin, (*result_len + 1) * sizeof(unsigned char));
 	}
 
 	*result_str = begin;
