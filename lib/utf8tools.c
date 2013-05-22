@@ -89,27 +89,32 @@ utf8_has_bom(const uint8_t *s, int str_len)
  * Author: Mikko Lehtonen
  * See: https://github.com/scoopr/wtf8/blob/master/wtf8.h
  */
-static inline char* utf8_encode(uint32_t codepoint, char *str)
+static inline char* utf8_encode(uint32_t codepoint, char *str, int *len)
 {
 	unsigned char *ustr = (unsigned char*)str;
+	*len = 0;
 	if (codepoint <= 0x7f) {
 		ustr[0] = (unsigned char)codepoint;
-		ustr+=1;
+		ustr += 1;
+		*len = 1;
 	} else if (codepoint <= 0x7ff ) {
 		ustr[0] = (unsigned char) (0xc0 + (codepoint >> 6));
 		ustr[1] = (unsigned char) (0x80 + (codepoint & 0x3f));
-		ustr+=2;
+		ustr += 2;
+		*len = 2;
 	} else if (codepoint <= 0xffff) {
 		ustr[0] = (unsigned char) (0xe0 + (codepoint >> 12));
 		ustr[1] = (unsigned char) (0x80 + ((codepoint >> 6) & 63));
 		ustr[2] = (unsigned char) (0x80 + (codepoint & 63));
-		ustr+=3;
+		ustr += 3;
+		*len = 3;
 	} else if (codepoint <= 0x1ffff) {
 		ustr[0] = (unsigned char) (0xf0 + (codepoint >> 18));
 		ustr[1] = (unsigned char) (0x80 + ((codepoint >> 12) & 0x3f));
 		ustr[2] = (unsigned char) (0x80 + ((codepoint >> 6) & 0x3f));
 		ustr[3] = (unsigned char) (0x80 + (codepoint & 0x3f));
-		ustr+=4;
+		ustr += 4;
+		*len = 4;
 	}
 
 	return (char*)ustr;
@@ -216,10 +221,11 @@ char*
 utf8_char_from_codepoint(uint32_t codepoint)
 {
 	char *out, *begin;
+	int len;
 
 	out = ecalloc(5, sizeof(char));
 	begin = out;
-	out = utf8_encode(codepoint, out);
+	out = utf8_encode(codepoint, out, &len);
 	out[0] = '\0';
 
 	return begin;
@@ -230,7 +236,7 @@ utf8_recover(const uint8_t *s, int length_bytes)
 {
 	uint32_t codepoint;
 	uint32_t prev, current;
-	int      i;
+	int      i, len;
 	char    *out, *begin;
 
 	/* There's probably a way to save some memory here */
@@ -244,7 +250,7 @@ utf8_recover(const uint8_t *s, int length_bytes)
 			case UTF8_ACCEPT:
 				/* Confirm that this doesn't cause other issues */
 				if (codepoint != 0x0000) {
-					out = utf8_encode(codepoint, out);
+					out = utf8_encode(codepoint, out, &len);
 				}
 				break;
 			case UTF8_REJECT:
@@ -289,4 +295,48 @@ utf8_strlen_maxbytes(const uint8_t *s, long max_bytes, int *valid)
 	*valid = (state == UTF8_ACCEPT);
 
 	return count;
+}
+
+static const uint32_t windows1252Codepoint[] = {
+	0x20ac, 0x0081, 0x201a, 0x0192, 0x201e, 0x2026, 0x2020, 0x2021, 0x02C6, 0x2030, 0x0160,
+	0x2039, 0x0152, 0x008D, 0x017D, 0x008e, 0x008f, 0x0090, 0x2018, 0x2019, 0x201C, 0x201D,
+	0x2022, 0x2013, 0x2014, 0x02DC, 0x2122, 0x0161, 0x203A, 0x0153, 0x009D, 0x017E, 0x0178
+};
+
+void
+windows1252_to_utf8(const char* str, int str_len, uint8_t **result_str, int *result_len)
+{
+	uint8_t *result, *begin;
+	uint32_t codepoint;
+	int codepoint_len;
+	unsigned char *ustr = (unsigned char*)str;
+
+	*result_len = 0;
+	result = (uint8_t*) emalloc((3 * str_len + 1) * sizeof(uint8_t));
+	begin = result;
+
+	while (*ustr) {
+		if (*ustr <= 0x7f) {
+			*result++ = *ustr;
+			*result_len += 1;
+		} else if (*ustr == 0x81 || *ustr == 0x8D || *ustr == 0x8F || *ustr == 0x90 || *ustr == 0x9D) {
+			// These are undefined so we just do nothing.
+		} else if (*ustr < 0xa0) {
+			codepoint = windows1252Codepoint[*ustr - 0x80];
+			result = utf8_encode(codepoint, result, &codepoint_len);
+			*result_len += codepoint_len;
+		} else {
+			*result++ = 0xc2 + (*ustr > 0xbf);
+			*result++ = (*ustr & 0x3f) + 0x80;
+			*result_len += 2;
+		}
+		*ustr++;
+	}
+	*result = '\0';
+
+	if (*result_len != str_len) {
+		begin = (uint8_t*) erealloc(begin, (*result_len + 1) * sizeof(uint8_t));
+	}
+
+	*result_str = begin;
 }
