@@ -1,9 +1,11 @@
 This PECL extension for PHP offers functions to handle UTF-8 encoded strings. It has no external dependencies.
 
+[Benchmark results]
+
 The following functions are implemented:
 
 * utf8_is_valid - Checks whether a string is valid UTF-8
-* utf8_strlen - Number of chara
+* utf8_strlen
 * utf8_substr
 * utf8_strpos
 * utf8_strrpos

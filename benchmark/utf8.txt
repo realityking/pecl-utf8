@@ -1,0 +1,272 @@
+[[Datei:Geocache.jpg|mini|Ein Geocache-Behälter]]
+'''Geocaching''' [{{IPA|'dʒiːoʊ̯kæʃɪŋ}} oder {{IPA|'geːokɛʃɪŋ}}] (von [[Griechische Sprache|griechisch]] ''γῆ, geo'' „Erde“ und [[Englische Sprache|englisch]] ''cache'' „geheimes Lager“), auch '''GPS-Schnitzeljagd''' genannt, ist eine Art elektronische Schatzsuche oder [[Schnitzeljagd]]. Die Verstecke („Geocaches“ [{{IPA|'geːokɛʃs}}], kurz „Caches“ [{{IPA|kɛʃs}}]) werden anhand [[Geografische Lage|geografischer Koordinaten]] im [[World Wide Web]] veröffentlicht und können anschließend mit Hilfe eines [[GPS-Empfänger]]s gesucht werden. Mit genauen [[Landkarte]]n ist auch die Suche ohne GPS-Empfänger möglich.
+
+Ein ''[[#Der Geocache|Geocache]]'' ist in der Regel ein wasserdichter Behälter, in dem sich ein [[Logbuch]] sowie verschiedene kleine Tauschgegenstände befinden. Jeder Besucher trägt sich in das Logbuch ein, um seine erfolgreiche Suche zu dokumentieren. Anschließend wird der Geocache wieder an der Stelle versteckt, an der er zuvor gefunden wurde. Der Fund wird im Internet auf der zugehörigen Seite vermerkt und gegebenenfalls durch Fotos ergänzt. So können auch andere Personen –&nbsp;insbesondere der Verstecker oder „Owner“ (englisch für „Eigentümer“)&nbsp;– die Geschehnisse rund um den Geocache verfolgen. Wesentlich beim gesamten Such- und Tauschvorgang ist, dass von anderen anwesenden Personen das Vorhaben nicht erkannt wird und so der Cache Uneingeweihten verborgen bleibt.
+
+== Geschichte ==
+=== Die Anfänge ===
+Das Geocaching lässt sich auf das schon ältere [[Letterboxing]] zurückführen, bei dem ebenfalls an verschiedenen Orten Behälter versteckt werden, die jedoch ohne GPS-Unterstützung gesucht werden. Die Suche erfolgt anhand von Hinweisen und eines Kompasses. Im Behälter ist ein spezieller Stempel, mit dem man den Fund in seinem persönlichen Logbook vermerkt. Letterboxing gab es nachweislich bereits 1854 in [[Dartmoor]] und es ist dort nach wie vor populär.
+
+Seit den 1980ern praktizierten die ''Nuuksion Metsäsissit'' in der Gegend um Helsinki nur mit Hilfe einer Landkarte und einer Genauigkeit von 10&nbsp;Metern ebenfalls Schnitzeljagden, bei denen Behälter mit verschiedenem Inhalt versteckt wurden. Anschließend gaben sie die ermittelten Koordinaten an Bekannte, die sich damit auf die Schatzsuche machen konnten. Ab den 1990er Jahren wurde zum ersten Mal das GPS-Signal verwendet, um die Genauigkeit der Koordinaten zu verbessern.
+
+=== Beginn der modernen Schnitzeljagd ===
+Erst durch die Abschaltung der künstlichen Verschlechterung der Genauigkeit ([[Selective Availability]]) des GPS-Signals durch die [[Bundesregierung (Vereinigte Staaten)|US-Regierung]] am 2.&nbsp;Mai 2000 wurde der Einsatz der GPS-Geräte im privaten Einsatzgebiet praktikabel. Die bisherige Genauigkeit der Positionsbestimmung per GPS-Signal wurde für nichtmilitärische Nutzer von ca. 100&nbsp;Meter auf etwa 10&nbsp;Meter erhöht. Um diese Verbesserung zu feiern, schlug Dave Ulmer am 3.&nbsp;Mai 2000 in der [[Usenet|Usenet-Newsgroup]] ''sci.geo.satellite-nav'' unter dem Titel ''The Great American GPS Stash Hunt'' vor, ein weltweites Spiel zu starten und an besonderen Orten Behälter mit Tauschobjekten und einem Logbuch zu verstecken.<ref>[http://groups.google.de/group/sci.geo.satellite-nav/browse_thread/thread/bc5e45a8542e4526/27fe7e6652bdecfe Usenet-Posting „The Great American GPS Stash Hunt!!“ von Dave Ulmer (Google Groups, englisch)]</ref> Als Regeln formulierte er „Get some Stuff, Leave some Stuff“ – „Nimm Zeug heraus, hinterlasse Zeug“ und das Führen eines Logbuchs, in dem sich die Finder eintragen und den Tausch von Gegenständen dokumentieren können.
+
+=== Der erste Geocache ===
+Am 3.&nbsp;Mai 2000 vergrub Dave Ulmer in der Nähe der Stadt [[Portland (Oregon)|Portland]] im US-Bundesstaat Oregon an der Position {{Coordinate|text=DMS|NS=45.291|EW=-122.413333|type=landmark|region=US-OR|name=Erster dokumentierter Geocache}} einen schwarzen Plastikeimer, in dem er neben CDs, einer Videokassette, Geldscheinen, einem Buch und einer Steinschleuder auch eine Konservendose mit Bohnen hinterlegte. Anschließend veröffentlichte er die Koordinaten des Verstecks in der Newsgroup.<ref>[http://groups.google.com/group/sci.geo.satellite-nav/browse_thread/thread/99c847733cb3547a Usenet-Posting „GPS Stash Hunt&nbsp;... Stash #1 is there!“ von Dave Ulmer (Google Groups, englisch)]</ref> Innerhalb eines Tages nach der Veröffentlichung wurde der „Stash“ (englisch „Geheimversteck“, „geheimes Lager“) als erstes von Mike Teague gefunden. Drei Tage später erstellte dieser eine private Website, auf der er die wachsende Anzahl an Stashes und deren Koordinaten dokumentierte.<ref>[http://web.archive.org/web/20000621194709/http://www.triax.com/yngwie/gps.html Website von Mike Teague bei archive.org]</ref>
+
+Der Original-Stash von Dave Ulmer wurde später stark beschädigt und existiert in der ursprünglichen Form nicht mehr.<ref>[http://img.groundspeak.com/user/2f905328-f38e-4a1e-9f04-adb195867622.jpg Foto der Überreste des ersten dokumentierten Caches]</ref> Als Erinnerung wurde an der ursprünglichen Stelle ein neuer Geocache und eine Gedenktafel platziert.<ref>[http://www.geocaching.com/seek/cache_details.aspx?ID=90544 ORIGINAL STASH TRIBUTE PLAQUE]</ref> Während der Vorbereitungen für die Aufstellung der Platte wurde vor Ort die alte Konservendose gefunden, die als Tauschgegenstand im ersten Stash gelegen hatte. Mittlerweile wird diese als ''[[#Trackables|Travel Bug]]'' bei Events gezeigt.<ref>[http://www.geocaching.com/track/details.aspx?id=83154 Original Can of Beans Travelbug]</ref>
+
+Am 30. Mai 2000 wurde das Wort ''Geocaching'' zum ersten Mal in einer Newsgroup vorgeschlagen, um negative Assoziationen des Wortes ''Stash'' zu vermeiden. Am 2.&nbsp;September 2000 teilte Jeremy Irish in dieser Newsgroup mit, dass er unter der Adresse ''geocaching.com'' eine eigene Website zur Auflistung der Caches erstellt hatte. Diese übernahm alle bisherigen Eintragungen von der alten Seite, die Mike Teague aus Zeitgründen nicht weiter aktualisieren konnte.
+
+=== Weltweite Verbreitung ===
+Laut der Datenbank des größten Geocache-Verzeichnisses ''geocaching.com'' existieren heute weltweit insgesamt über 2.000.000 aktive Caches,<ref name="GeocachingCom">Geocaching.com: ''[http://www.geocaching.com/ Anzahl Caches weltweit]''</ref> davon befinden sich fast 280.000 in Deutschland, über 18.000 in der [[Schweiz]] und über 28.000 in [[Österreich]]. In den [[Vereinigte Staaten|USA]] befinden sich mit etwa 844.000 die meisten Caches (Stand: Dezember 2012).<ref>Geocaching.com: ''[http://www.geocaching.com/seek/nearest.aspx?country_id= Suchmaske „Caches nach Ländern“]''</ref>
+
+Der erste Cache in Deutschland wurde am 2.&nbsp;Oktober 2000 von Ferenc Franke<ref>B.Z. (www.bz-berlin.de): ''Geocacher! Die Satelliten-Schnitzeljäger'', Printausgabe 22. Oktober 2002, Seite 14</ref> südlich von [[Berlin]] versteckt und trägt den Namen ''First Germany''. Dieser ist aber mittlerweile archiviert<ref>[http://www.geocaching.com/seek/cache_details.aspx?ID=119 Der erste Geocache: First Germany]</ref> Der erste österreichische Geocache hatte den Namen ''Austria's First''. <ref>[http://coord.info/GCE47 Der erste öst. Cache]</ref> Auch dieser ist mittlerweile archiviert. Mit knapp 47.000 liegen die meisten Caches in [[Nordrhein-Westfalen]], während die größte Cache-Dichte mit 3,5 Caches/km² in Berlin, dicht gefolgt von [[Hamburg]] und [[Wien]] mit jeweils 3,4 Caches/km², zu finden ist (Stand: März 2013).<ref>geocaching.com: ''[http://www.geocaching.com/seek/nearest.aspx?country_id= „Suchmaske Caches nach Ländern/Bundesländern“]'' 25. März 2013</ref><ref>''[[Land_(Deutschland)#Rahmendaten_der_Länder]]'' 25. März 2013</ref><ref>Statistikseite für Österreich [http://aj-gps.net/ aj-gps.net]</ref> Schätzungen zufolge begaben sich 2009 in Deutschland rund 25.000 Menschen auf die „GPS-Jagd“.<ref name="spiegel">[http://www.spiegel.de/reise/deutschland/0,1518,644695,00.html spiegel.de: GPS-Schnitzeljagd verärgert Umweltschützer], 26. August 2009</ref>
+
+Die größte Cache-pro-Kopf-Verbreitung hatten im Januar 2007 die nordischen Länder [[Schweden]], [[Norwegen]], [[Finnland]] und [[Dänemark]].<ref>ingwer.ch/geo: ''[http://ingwer.ch/geo/stats1.html Statistik über Geocaches in Europa]'' Januar 2007</ref>
+
+== Der Geocache ==
+[[Datei:NanoGeocache.jpg|mini|Zwei Geocache-Behälter der Größe ''Nano'']]
+[[Datei:Geocache CZ 03.JPG|mini|''Regular''-Geocache mit [[GPS-Empfänger]] (links)]]
+Bei einem ''Cache'' handelt es sich zumeist um einen festen, wasserdicht verschließbaren Behälter, der somit den Inhalt vor Witterungs- und anderen Einflüssen schützen kann. Der Behälter selbst kann unterschiedliche Formen haben, von einer kleinen Filmdose über eine einfache Frischhaltedose aus Plastik bis hin zur Munitionskiste aus Stahl oder gar einem versteckten Tresor, dessen Kombination erst herausgefunden werden muss. Oft wird die Größe des Behälters durch den Ort des Verstecks bestimmt. Für die Cachebehälter hat sich folgende Größeneinteilung etabliert:
+
+* '''Nano''': Winziger Cache-Behälter, Durchmesser meist unter 1&nbsp;cm, der lediglich einen kleinen Zettel als Logbuch enthält. Oft magnetisch, damit er an Denkmälern oder ähnlichem unauffällig versteckt werden kann. „Nano“-Caches stellen laut ''geocaching.com'' eine Sonderform von Micro-Caches dar.<ref name="CP-Nano">Cacheopedia, [http://www.cacheopedia.com/wiki?title=Nano_cache&oldid=5792 Nano Cache], aufgerufen am 9. August 2012.</ref><ref>Tafari: [http://www.reviewer.at/wp/faq/42-cachegroesse-angeben Cachegröße angeben beschleunigt den Reviewprozess], aufgerufen am 9. August 2012.</ref> Dennoch wählen manche Cache-Owner für Nanos die Größenbezeichnung „other“ und geben dann die näheren Details zur Größe in der Cache-Beschreibung an.<ref name="CP-Nano" /><ref>Kescherbande: [http://blog.kescherbande.de/2009/01/11/ein-nano-ist-kein-micro Ein Nano ist kein Micro]. Abgerufen am 9. August 2012.</ref>
+* '''Micro oder Mini''': Sehr kleine Cache-Behälter, die oft nur einen Zettel und Stift enthalten. Oft werden [[Filmdose]]n oder [[PET-Rohling]]e („PETlinge“) verwendet.
+* '''Small''': Kleine Behälter, die neben einem Logbuch noch Platz für kleinere Gegenstände bieten.
+* '''Regular''' bzw. '''Medium''': Cache mittlerer Größe, der Platz für mehrere Travelbugs oder Tauschgegenstände bietet. Behälter dieser Größe können von einem Liter bis zu mehreren Litern Inhalt fassen.
+* '''Large''': Große Behälter, die ein Maximum an Platz bieten und somit außergewöhnliche Tauschobjekte fassen können.
+Bis auf die Nano-Größe können Cache-Owner die Größe ihrer Caches beim Erstellen des Listings angeben. Beim Suchen der Caches ist es hilfreich zu wissen, welche Größe der Cache hat, weil sich je nach angegebener Größe etwaige Verstecke ausschließen.
+[[Datei:Cache near Špilberk Castle (2).JPG|mini|links|Beispielhafter Geocache-Inhalt]]
+Der Cachebehälter enthält neben dem Logbuch zumeist Tauschgegenstände. Wurde ein Cache gefunden, kann der Finder einen oder mehrere der enthaltenen Gegenstände entnehmen und zum Tausch etwas anderes dafür hinterlegen. Dieser Tauschhandel (''Trading'') wird dann im Logbuch und auf der zugehörigen Internetseite vermerkt. Es besteht kein Zwang zum Tauschen; bei manchen Caches (beispielsweise ''Micro-Caches'') besteht aus Platzgründen auch gar keine Möglichkeit. Allerdings gilt beim Tauschen immer der Grundsatz ''„Trade up, trade equal or don’t trade“''; das heißt die entnommenen und eingebrachten Gegenstände sollen in einem gesunden Wertverhältnis stehen. Übersteigt der Wert der entnommenen Gegenstände die der Hinterlassenen deutlich, so wird dies als ''Downtrade'' oder ''Downtrading'' bezeichnet und ist weitgehend verpönt – im Gegensatz zu ''Uptrade'' oder ''Uptrading'', also dem Hinterlassen eines höherwertigen Tauschobjekts. Hat man nichts Geeignetes zum Tauschen, bietet es sich an, auf einen Tausch zu verzichten. Ebenso ist es nicht sinnvoll, Lebensmittel oder beispielsweise zeitlich beschränkte Gutscheine zu hinterlassen, da manche Caches nur selten gefunden werden und Lebensmittel Tiere anziehen. Da auch Familien mit Kindern auf „Schatzsuche“ gehen, sind Gegenstände ohne [[Jugendfreigabe]] ebenfalls tabu.
+
+Jeder Cache sollte als Grundausstattung eine Art „[[Gebrauchsanweisung]]“ (''Cache Note'') beinhalten, damit eventuelle Zufallsfinder wissen, worum es sich bei dem Behälter handelt und ihn somit nicht als Müll oder Bedrohung ansehen.
+
+== Trackables ==
+[[Datei:Travel bug tag.jpg|mini|''Travel-Bug''-[[Erkennungsmarke]]n mit Nummer]]
+[[Datei:Geocoin usa.jpg|miniatur|Geocoin]]
+Neben alltäglichen Tauschobjekten gibt es so genannte ''Trackables''. Zu den verbreitetsten zählen die ''Travel Bugs'' (von englisch ''bitten by the travel bug'' „vom Reisefieber gepackt“). Dies sind Gegenstände, die von Geocachern von einem Cache zu einem anderen transportiert werden und deren dabei zurückgelegter Weg auf speziellen Internetseiten protokolliert wird. Zu diesem Zweck ist jeder Travel Bug über eine eindeutige Zahlenkombination identifizierbar. Diese Nummer ist (bei den Exemplaren von ''geocaching.com'') auf zwei Aluminium-Marken geprägt, wie sie in ähnlicher Form vom Militär verwendet werden („[[Erkennungsmarke|Dog Tag]]“, „Hundemarke“). Eine dieser Marken bleibt immer bei demjenigen, der den Travel Bug initiiert hat, die andere wird an dem Gegenstand befestigt. Der Initiator eines Travel Bugs kann zusätzlich zum einfachen Reisen spezielle Aufgaben für den Travel Bug definieren. So soll sich ein Travel Bug beispielsweise nur in einem bestimmten Land aufhalten, ein bestimmtes Ziel erreichen oder bevorzugt nur an bestimmten Orten abgelegt werden. Anhand der Caches, in denen der Travel Bug landet, wird die Distanz berechnet, die der Travel Bug zurückgelegt hat (Luftlinie). Gelegentlich schließen sich auch Cacher zusammen, um ein ''Travel-Bug-Rennen'' zu veranstalten.
+
+Da die Travel Bugs von ''geocaching.com'' nur durch den kostenpflichtigen Erwerb eines Dog Tag registriert werden können, etablieren sich inzwischen kostenlose alternative Angebote wie zum Beispiel ''GeoKrety'' (von griechisch ''γη,'' ''geo'' „Erde“ und [[Polnische Sprache|polnisch]] ''krety'' „Maulwürfe“), bei denen jeder Nutzer die Identifikationskennzeichnung selber erstellen kann. Nachteil der kostenlosen Travel Bug-Variante ist, dass die Bewegung des Objektes auf kommerziell betriebenen Geocaching-Webseiten oft nicht oder nicht unmittelbar mit der Cachebeschreibung protokolliert werden kann. Webseiten wie GeoKrety bieten aber alle sonst verfügbaren Funktionen wie Kartendarstellung und Entfernungsberechnung.
+
+Eine spezielle Variante von Travel Bugs sind so genannte ''[[Geocoin]]s''. Diese meist aufwändig produzierten und zum Teil recht individuell gestalteten Medaillen sind seltener und daher begehrter als die herkömmlichen Travel Bugs. Obwohl sie wie diese hauptsächlich zwischen Caches reisen sollen, gibt es deshalb neben den ''wandernden'' Coins auch Varianten, die den Eigentümer stets begleiten und deren Sichtung durch andere Geocacher auch mit einem speziellen Logeintrag (''Discovered'') protokolliert wird.
+
+Immer wieder müssen Cacher den Verlust ihrer Trackables melden, weil entweder Finder des Gegenstands nicht erkennen, dass es sich um einen Trackable handelt und diesen behalten (gerade bei einem schönen Geocoin) oder Coin-Sammler die Coins bewusst an sich nehmen, um ihre Privatsammlung zu ergänzen. Letztgenannte Cacher werden „Coindiebe“ genannt.
+
+== Verstecke und Varianten ==
+[[Datei:Cache near Špilberk Castle.JPG|mini|Baumwurzelversteck eines Geocaches]]
+Aus Rücksicht auf die Natur ist das Vergraben von Caches verpönt und bei ''geocaching.com'' in den Nutzungsbedingungen ausdrücklich untersagt. Auch das Eingraben von Rohren, deren getarnter Deckel durch die Finder dann ohne Grabwerkzeuge entfernt werden kann, ist im Leitfaden von ''geocaching.com'' untersagt. Daher werden überwiegend bereits vorhandene natürliche oder künstliche Hohlräume als Versteck verwendet: Kleine Höhlen, Nischen zwischen Felsen oder Baumwurzeln, Mauerritzen, alte Gebäude und so weiter. Um die Gefahr von Zufallsfunden zu mindern und die Suche zu erschweren, sind insbesondere bodennahe Verstecke meist mit Laub, Rinde, Moos, Steinen oder Zweigen getarnt. Besonders raffinierte Verstecke sind unter anderem in extra dafür angefertigten Bohrungen versenkte Filmdosen, beschriftete Magnetfolien, Informationen an Mauern, Felsen, unter Sitzflächen von Parkbänken und in Ritzen von Schautafeln. Auch in ehemaligen Schaltkästen, an Angelsehnen, in Rohrstangen oder unter Wasser können Geocaches deponiert sein.
+
+Caches werden üblicherweise dem Schwierigkeitsgrad der Wegstrecke und des Geländes (''Terrain'') sowie dem Schwierigkeitsgrad der Aufgaben (''Difficulty'') bewertet, um den ungefähren Aufwand für die Suche anzudeuten. Caches können verlangen, besondere Ausrüstung mitzuführen (von der einfachen [[Taschenlampe]] bis hin zur Kletter-, Bergsteiger- oder [[Tauchausrüstung]]), Rätsel- oder Rechenaufgaben zu lösen, Bäume zu erklettern oder [[Grotte]]n und [[Höhle]]n zu erkunden.
+
+Caches lassen sich anhand ihrer Aufgabenstellung in verschiedene Kategorien unterteilen, die wichtigsten sind:
+
+* Der „einfache“ Cache (''Traditional Caches''), bei dem direkt die Position des Verstecks angegeben ist.
+* Mehrstufige Caches (''Multi Caches'' oder ''Offset Caches''), bei denen man mehrere Orte mit Hinweisen auf den nächsten Ort oder das eigentliche Versteck aufsuchen muss.
+* Rätsel-Caches (''Mystery Caches''), die schon im Vorfeld eine Recherche oder Knobelei erfordern.
+* Virtuelle Caches (''Virtual Caches''), bei denen weder ein Cachebehälter noch ein Logbuch vorhanden sind, am weitesten verbreitet sind hierbei die ''Earth Caches'', die auf spezielle geologische Phänomene hinweisen.
+
+=== Traditional Cache ===
+Die ersten Caches gehörten dieser Kategorie an, daher die Bezeichnung „Traditional Cache“. Sie waren anfangs an besonderen Orten versteckt, heutzutage aber praktisch überall, auch in urbanem Gebiet.
+
+Bei Traditional Caches werden die Koordinaten des Cache-Verstecks veröffentlicht. Dennoch kann das Auffinden schwierig sein, weil der Cache gut getarnt ist, schwer erreichbar ist (zum Beispiel durch Bergsteigen oder einen Tauchgang), Geschicklichkeit für die Bergung notwendig ist oder der Ort '' [[#Tarnung und Muggels|vermuggelt]]'' ist.
+
+Caches, die man einfach mit dem Auto erreichen und schnell finden kann, werden auch als ''Drive-in-'' oder ''Park-n-Grab-Caches'' bezeichnet.
+
+Die Mehrheit der in Deutschland versteckten Caches sind „Traditionals“.
+
+=== Multi-Cache ===
+Bei einem ''Multi-Cache'' sind mehrere Stationen (''Stages'') zu absolvieren, um das Cache-Versteck zu finden. Die Koordinaten der Stationen sind entweder komplett veröffentlicht oder sind an der vorgehenden Station versteckt. Die Koordinaten des Cache-Verstecks ergeben sich meist durch Hinweise, die der Geocacher an den einzelnen Stationen findet. Die Hinweise können eigens für den Cache angebracht sein (zum Beispiel durch Anschreiben oder Metalltäfelchen) oder ergeben sich aus vorhandenen Landschaftsmarken (zum Beispiel durch Bezug auf bereits vorhandene Schilder).
+
+Die Schwierigkeit hängt von den zu lösenden Aufgaben, von den zu findenden Hinweisen und vom Cache-Versteck selbst ab. Länge und Beschaffenheit der Wegstrecke bestimmen die Terrain-Bewertung.
+[[Datei:Nachtcacherp.jpg|mini|Nachtcache: Der angestrahlte Reflektor am Baum ist nur bei Dunkelheit zu erkennen.]]
+Ein ''Nacht-Cache'' ist meist ein Multi-Cache, bei dem die Stationen und Hinweise nur bei Dunkelheit wahrgenommen werden können. Die Stationen haben [[Rückstrahler|Reflektoren]], blinkende [[LED]]s, akustische Signalgeber, Lichtschranken, Wecker oder andere technische Spielereien. Manche Caches erfordern spezielle Geräte (zum Beispiel [[Nachtsichtgerät]], [[Metalldetektor]], [[Funkgerät]] oder [[UV-Licht]]), um die Hinweise zu finden.
+
+=== Mystery-Cache ===
+Bei einem ''Mystery-Cache'' (auch: ''Puzzle-Cache'' oder ''Rätsel-Cache'') muss zunächst ein Rätsel gelöst werden, bevor mit der Suche begonnen werden kann. Die im Internet veröffentlichten Koordinaten entsprechen daher nicht den tatsächlichen Werten, sondern weisen auf einen willkürlichen Punkt, der für die Suche ohne Bedeutung ist. Dieser sollte sich jedoch in der Nähe befinden (maximal 3&nbsp;km Entfernung), um den Cache regional richtig zuordnen zu können.
+
+Die Rätsel können sehr unterschiedlicher Art und Schwierigkeit sein (mathematische Rätsel, trigonometrische Aufgaben, Literaturaufgaben, Internet-Recherchen, Sudokus, Bilderrätsel, Entschlüsselungen usw.). Die ermittelte Koordinate ist entweder der Cache selbst (wie beim Traditional Cache) oder der Beginn eines Multi-Caches.<ref>[http://www.bergleben.de/wandern/2428-mystery-caches-ein-fall-fuer-echte-detektive.html Beispiele für Anwendungen von Mystery-Caches in Deutschland]</ref>
+
+=== Caches ohne realen Cachebehälter ===
+[[Datei:Earthcache-DK-Æbelø.jpg|mini|Geocacher vor einem Earth-Cache]]
+Caches ohne realen Behälter und Logbuch sind ''virtuelle Caches'', ''Locationless Caches'', ''EarthCaches'' und ''Webcam Caches''. Es ist in Geocacher-Kreisen sehr umstritten, ob das Verstecken und Suchen von solchen Caches „echtes“ Geocaching ist. Mit Ausnahme von ''EarthCaches'' werden diese Caches auf der Seite ''geocaching.com'' nicht mehr freigeschaltet, auf ''opencaching.de'' sind sie hingegen erlaubt.
+
+Bei ''Webcam Caches'' wird der Fund durch ein Webcam-Bild des Finders dokumentiert. Gelegentlich sind zusätzliche Aufgaben zu erfüllen oder Utensilien verlangt, damit der Finder auf dem Bild erkennbar ist.
+
+Caches, die kein GPS-Gerät benötigen und die „von zu Hause aus“ absolviert werden können, haben nichts mit der ursprünglichen Idee des Geocachings zu tun und werden deshalb von vielen nicht als „Geocaching“ betrachtet.
+
+=== EarthCache ===
+''EarthCaches''  führen den Cacher zu geologisch interessanten Orten, an denen er etwas über die Entstehung, den Aufbau und die Formen der Erdkruste und ihrer unterschiedlichen Gesteinsarten erfahren kann. Sie sind bei ''geocaching.com'' ein eigenständiger Cachetyp, der in Form eines Traditional (eine einzige zu besuchende Koordinate) oder eines Multi (mehrere zu besuchende Koordinaten/Stages) gestaltet sein kann. Das Konzept der EarthCaches wurde von Gary Lewis (Geoaware), Educational Director der [[Geological Society of America|Geological Society of America]], entwickelt. Der erste EarthCache wurde am 10. Januar 2004 in Australien gelegt. EarthCaches werden vor der Freischaltung von speziellen Reviewern, den ''Geoawares'' überprüft. Abkürzungen im Namen, wie z.&nbsp;B. GeowareUSA, verraten den Zuständigkeitsbereich des Reviewers. Die für den deutschen Sprachbereich zuständigen Reviewer nennen sich GeoawareDE. Zum Loggen eines ''EarthCaches'' muss der Cacher verschiedene Fragen zum vorgestellten geologischen Thema beantworten und sie dem Besitzer des Caches zuschicken. Die Fragen sollen so gestellt sein, dass der Cacher seinen Besuch vor Ort nachweisen kann.<ref>http://www.earthcache.org; oder auf deutsch: http://www.gc-reviewer.de/earthcaches/</ref>
+
+=== Event-Cache ===
+Der ''Event-Cache'' ist ein Ereignis, das zu einem bestimmten Zeitpunkt stattfindet oder beginnt. Meist sind Event-Caches Treffen von Geocachern mit [[Stammtisch]]charakter. Eine weitere Form sind Multi-Caches mit besonderen Stationen oder Anforderungen, die nur zeitweise existieren oder durch fachkundige Personen betreut werden.
+Groundspeak definiert einen großen Event-Cache mit mehr als 500 Teilnehmern als ''Mega-Event Cache''. Diese Veranstaltungen finden meist jährlich statt und ziehen auch internationale Besucher an.<ref>http://www.geocaching.com/about/cache_types.aspx</ref>
+
+Eine besondere Form eines Event-Caches ist das ''Cache in – Trash out'' (CITO). Dabei wird ein bestimmtes Gebiet festgelegt, aus dem Müll beseitigt wird. Meist wird nach dem Säubern der Gegend ein Erinnerungs-Cache ausgelegt.
+
+Bei Event-Caches entstehen häufig Ideen für neue anspruchsvolle Caches, da sich dort Geocacher aus der Region treffen und diskutieren. Auch Einsteiger können sich bei Event-Caches mit dem Thema vertraut machen. Andere Geocacher können persönlich kennen gelernt und Telefonnummern ausgetauscht werden, um bei Problemen per Mobiltelefon einen Finder oder Owner zu kontaktieren (so genannter „Telefonjoker“). Inwiefern diese „Telefonjoker“-Hilfe im Sinne des Spiels ist, wird mitunter kontrovers diskutiert.
+
+=== Wherigo-Cache ===
+[[Wherigo]] (deutsch in etwa: ''Wohin ich gehe'') ist eine Plattform für GPS-gestützte Adventure-Games in der Realität und seit Frühjahr 2008 ein neuer Cache-Typ auf ''geocaching.com''. Das GPS führt Spieler, die auf ihr GPS-Gerät – zum Beispiel ein [[Personal Digital Assistant|PDA]], das ''Garmin Colorado 300'', die Garmin-Oregon-Serie oder auch [[Android (Betriebssystem)|Android]]- oder [[Symbian-Plattform|Symbian]]-Geräte –  eine entsprechende sogenannte „[[Modul (Computerspiele)|Cartridge]]“ laden, an eine gewünschte Stelle, von der sie dann mit virtuellen Objekten und Charakteren interagieren können. Die Möglichkeiten von Wherigo sind sehr umfangreich, so kann man beispielsweise bei Annäherung an einzelne Orte bestimmte Bilder oder Texte mit Aufgaben anzeigen. Besonders reizvoll erscheint Wherigo in den Fällen, in denen nicht nur lineare Abläufe dargestellt werden, sondern der Anwender selber entscheiden kann, in welcher Reihenfolge er einzelne Stationen besucht. Die wesentliche Arbeit steckt bei Wherigo darin, die Cartridge zu erstellen. Einige Garmin-Geräte wie die Oregon-Serie (bis 2012) können die für ''Wherigo''-Adventures notwendigen Cartridges direkt laden und abspielen, neuere Garmin-Geräte allerdings nicht mehr.
+
+=== Challenges ===
+Die Grundidee der seit August 2011 auf ''geocaching.com'' verfügbaren Challenges ist es „irgendwo hin zu gehen und irgendetwas zu machen“. Dies ist vollkommen unabhängig von den bei obigen Cachearten versteckten Behältern und Logbüchern. Zum Start dieser Cacheart können Premium-Mitglieder auf ''geocaching.com'' zwei verschiedene Arten von Challenges anlegen. Bei einer Action Challenge muss eine bestimmte Aufgabe an einem bestimmten Ort ausgeführt werden. Beispielsweise ein Lied auf einem großen Platz singen oder die Stufen bis zur Spitze eines Turms zu besteigen. Bei einer Photo Challenge müssen die Teilnehmer ein Foto von sich an einem speziellen Ort aufnehmen, beispielsweise neben einem Denkmal oder vor einem Straßenschild.
+
+Die eingestellten Challenges können von GeoCachern akzeptiert und später dann als „complete“ geloggt werden. Dabei kann man vorhandene Challenges in der Nähe finden oder an weltweiten Challenges teilnehmen. Die Challenges werden separat gezählt und zählen nicht zu der Gesamtpunktzahl der Caches dazu.
+
+Im Dezember 2012 gab Groundspeak bekannt, dass die Geocache-Challenges eingestellt werden.<ref>[http://forums.groundspeak.com/GC/index.php?showtopic=304869 Ankündigung von Groundspeak zur Einstellung von Geocache Challenges]</ref>. Seither können Challenges weder erstellt noch akzeptiert werden.
+
+=== Sonstiges ===
+[[Lost Place]]s stellen keinen eigenen Cache-Typ dar, sondern sind nur ein besonderes Versteck. Dabei werden, oft in Verbindung mit Hintergrundgeschichten, verlassene und herrenlose Gebäude mit in die Spurensuche einbezogen. So kann es sein, dass man als [[Indiana Jones]] in alten Ruinen sucht oder einen fiktiven Mord in einer Fabrikanlage aufklären soll. Manche dieser „verlorenen Orte“ sind
+alte Bunkeranlagen im Wald oder ganze [[Wüstung|aufgegebene Dörfer]].
+
+Das HCC (Hardcorecaching) umfasst Geocaches, deren Terrain und Schwierigkeit hoch eingestuft sind (auf ''geocaching.com'' größer/gleich „vier von fünf Sternen“). Das Erreichen dieser Caches stellt besondere Anforderungen an den Geocacher, sei es das Lösen schwieriger Rätsel wie z.&nbsp;B. das Decodieren verschlüsselter Informationen, oder auch körperliche Fitness. In der Regel beansprucht das Finden eines Hardcorecaches mehrere Stunden bis Tage, und spezielle Ausrüstung z.&nbsp;B. zum Klettern oder Tauchen wird dabei erforderlich.
+
+Ein ''Moving Cache'' ist ein Geocache, der vom Finder mitgenommen und an einer anderen Stelle neu versteckt wird. Die Koordinaten des alten Verstecks werden durch die des neuen ersetzt. Zwei seltenere Varianten sind zum einen das Tragen eines „Moving Caches“, wenn man unterwegs ist; hierbei wird die Möglichkeit eingeräumt, die Position des Caches live am Computer oder einem Mobiltelefon mit Internetfunktion zu verfolgen; zum anderen gibt es „Moving Caches“, die man in anderen Caches finden und mitnehmen kann und bei einer weiteren Suche in einem anderen Cache platziert. Die letztere Variante ähnelt vom Prinzip einem „Travel Bug“. „Moving Caches“ jeder Art sind in der Datenbank ''geocaching.com'' nicht zugelassen, in anderen Datenbanken aber möglich. Es gibt auch „Moving Caches“, die sozusagen als [[OpenSource|Open-Source-Projekt]] angelegt sind. Der Besitzer („Owner“) legt die Kennung, mit der er den Schatz gelegt hat, in den Schatz und gibt Regeln vor, anhand deren ein Finder sich des Schatzes bemächtigen kann und diesen verändern oder an einen anderen Platz bringen kann.
+
+== Geocache-Datenbanken ==
+{{Hauptartikel|Geocache-Datenbanken}}
+Durch die schnelle Verbreitung des Geocaching und die wachsende Anzahl an Geocaches entstand schnell die Notwendigkeit, diese in einer gemeinsamen Datenbank zu katalogisieren und den Nutzern über das Internet komfortabel zur Verfügung zu stellen. Die bekannteste und umfangreichste Datenbank ist ''geocaching.com'', die seit den Anfängen im Jahr 2000 existiert und weltweit ca. 2 Millionen<ref name="GeocachingCom" /> Geocaches enthält (Stand: Februar 2013). Weitere Geocache-Datenbanken sind beispielsweise ''Navicache.com'', ''Terracaching.com'' und ''Opencaching.de''. Daneben gibt es länderspezifische Geocaching-Portale wie ''Geocaching.de'', ''reviewer.at'' und ''Geocache.ch''.
+
+== Reviewprozess ==
+=== geocaching.com ===
+Bei der Geocaching-Datenbank ''geocaching.com'' gibt es einen vorgelagerten Review-Prozess, den jedes Listing durchlaufen muss. Hiebei werden von einem für eine Region zuständigen Reviewer die Informationen, die der Owner im Zusammenhang mit einem Geocache online zur Verfügung stellt, auf deren Einhaltung der Richtlinien zum Verstecken von Geocaches überprüft. Es erfolgt keine physische Überprüfung des Behälters vor Ort, sondern lediglich eine formale Beurteilung des Cachelistings. Sind daraus Sachverhalte erkennbar, die eine Verletzung der genannten Richtlinien anzeigen, muss der zuständige Reviewer mit dem Owner Kontakt aufnehmen und um Bereinigung der Situation ersuchen.
+
+Wesentliche Punkte der Überprüfung sind:
+
+* Einhaltung der ''Land policies'' (sofern vom Schreibtisch aus beurteilbar)
+* Einhaltung der Mindestabstände zu anderen Geocaches bzw. deren Stationen
+* Richtige Klassifizierung des Cachestyps sowie der Behältergröße
+* Einhaltung der Richtlinien hinsichtlich Cachelistings mit kommerziellem Hintergrund
+* Allfällig vorhandene Weblinks in der Cachebeschreibung
+
+und noch einiges mehr.<ref>[http://reviewer.at/wp/guidelines-von-gccom/18-erlaeuterungen-zu-den-allgemeinen-guidelines Inforportal der österr. Geocaching Reviewer]</ref>
+
+Erst danach kann das Listing veröffentlicht werden. Im Falle von Meinungsverschiedenheiten zwischen Reviewer und Owner des Geocaches steht es jedem Owner frei, sich an eine eigene Stelle beim Datenbankbetreiber zu wenden, um die Angelegenheit klären zu lassen.
+
+=== Andere Datenbanken ===
+Andere Datenbanken verfügen entweder über keinen oder einen nachgelagerten bzw. anlassbezogenen Reviewprozess. In diesen Fällen reagiert der Reviewer erst dann, wenn aus der Community eine entsprechende Reaktion erfolgt.
+
+== Ausrüstung ==
+=== GPS-Empfänger ===
+[[Datei:Travelbug-GPSr.jpg|mini|Verschiedene tragbare [[GPS-Empfänger]]]]
+[[Datei:Geocaching mit Telefon und GPS-Empfänger.jpg|mini|Geocaching mit einfachem Telefon und GPS-Empfänger]]
+Zum Auffinden der Caches reicht ein einfacher [[GPS-Empfänger]]. Die Anzeige topografischer Karten kann die Orientierung im Gelände erleichtern, Straßenkarten und Navigationsfunktionen können die Anreise ins Zielgebiet unterstützen.
+
+Neben dedizierten GPS-Geräten bieten auch [[Notebook]]s, [[Personal Digital Assistant|PDAs]], [[Mobiles Navigationssystem|mobile Navigationssysteme]] sowie Mobiltelefone mit integriertem oder externem GPS-Empfänger entsprechende Funktionen. Sie sind jedoch weniger für die Anforderungen anspruchsvoller Caches ausgelegt als Outdoor-GPS-Geräte, die lange Akkulaufzeiten bieten und gegen Belastungen durch Stöße und Wasser geschützt sind.
+
+In offenem Gelände oder auf dem Wasser können GPS-Geräte die Position sehr präzise bestimmen. In dicht belaubtem Wald oder Schluchten haben besonders ältere GPS-Geräte Schwierigkeiten, die Position mit einer genügenden Genauigkeit zu ermitteln. Die Weiterentwicklung der Geräte verbessert jedoch auch den Empfang unter schwierigen Verhältnissen.
+
+=== Software ===
+Verschiedene Softwarelösungen erleichtern das Geocaching, sind aber keine Voraussetzung. Damit können Caches und deren Beschreibungen verwaltet, nach verschiedenen Kriterien ausgewählt und auf tragbaren Systemen wie PDAs, Smartphones oder Mobiltelefonen gespeichert werden. Dadurch kann auf das Ausdrucken der Cache-Beschreibungen verzichtet werden (so genanntes ''paperless caching'').
+
+== Tarnung und Muggels ==
+[[Datei:Geocache klein.jpg|mini|Cachebehälter mit angeklebtem Tarnnetz]]
+Caches werden meist so versteckt und getarnt, dass sie von Unbeteiligten nicht gefunden oder erkannt werden. Außerdem gilt der Grundsatz, Cache-Verstecke geheim zu halten und möglichst unbeobachtet aufzusuchen. Andernfalls besteht die Gefahr, dass der Cache von Unbeteiligten beschädigt wird oder verloren geht.
+
+Außenstehende, die Geocaching nicht kennen, werden als ''Muggels'' oder ''Geomuggels'' bezeichnet. Der Begriff stammt aus den Harry-Potter-Büchern, dort wird [[Begriffe der Harry-Potter-Romane#Muggel|Muggel]] als Bezeichnung für Personen ohne magische Abstammung und Fähigkeiten verwendet.
+
+== Mögliche Probleme und Kritik ==
+Caches können von Unbeteiligten irrtümlich für eine Bedrohung gehalten werden, hinter der beispielsweise ein terroristischer Hintergrund vermutet wird. Beispiele sind die vierstündige Sperrung einer Schleuse aufgrund Bombenverdachts,<ref>[http://www.geoclub.de/ftopic8604.html Geocaching - Schleusensperrung aufgehoben?!]</ref> ein aufwändiger Polizei- und Feuerwehreinsatz wegen einer „unbekannten Vorrichtung“ an einer Straßenlaterne<ref>[http://www.geoclub.de/ftopic13209-0-asc-0.html Geocaching - Soda Lampe und Polizeibesuch]</ref> sowie Bombenwarnungen mit anschließenden Polizeieinsätzen an der Autobahn bei Erlangen<ref>[http://www.erlanger-nachrichten.de/artikel.asp?art=792678&kat=19 «Bombenfund» auf der Autobahn]</ref> und in der Wiesbadener Innenstadt.<ref>Wiesbadener Kurier: ''Moderne Schnitzeljagd provoziert Bombenalarm'' 24. April 2008</ref> An der Außenseite des Cache-Behälters angebrachte Hinweise und Kontaktinformationen des Owners können helfen, solche Missverständnisse zu vermeiden.<ref>[http://www.bahnaktuell.net/?p=16604 Polizeieinsätze durch Geocaching] (29. September 2009)</ref>
+
+Der Geocacher selbst kann Unbeteiligten ebenfalls verdächtig erscheinen, wenn er den Cache betont unauffällig sucht, findet und wieder versteckt. Beispielsweise schritt schon die Polizei in Bremen ein, da ein Verdacht auf Drogenhandel mithilfe eines konspirativen Drogenversteckes vorlag.<ref>[http://www.presseportal.de/polizeipresse/pm/35235/2008262/polizei_bremen ''Ein Fall von GeoCaching'', Pressebericht der Polizei Bremen vom 15. März 2011]</ref> Trotzdem sind solche Polizeieinsätze wegen Geocachern seltene Ausnahmen und haben meist keine Folgen für die Geocacher.<ref>[http://www.np-coburg.de/nachrichten/lokal/co-land/coburgland/art2400,878762 Schnitzeljagd rief Polizei auf den Plan]</ref>
+
+Extreme und schwierige Cache-Verstecke können ein Sicherheitsrisiko für Geocacher darstellen.<ref name="spiegel" /> Das Gefährdungspotential von Bunkern, Bergwerksstollen, Höhlen oder Steilwänden ist nicht immer offensichtlich oder wird von Unerfahrenen falsch eingeschätzt. Obwohl für jeden Cache ein Schwierigkeitsgrad angegeben wird, können sich Cacher durch Selbstüberschätzung in Gefahr bringen.<ref>[http://salzburg.orf.at/stories/380740/ orf.at: Beim Geocaching in Bergnot geraten], 6. August 2009</ref>
+
+Aus Gründen des [[Naturschutz]]es kann es problematisch werden, wenn Geocaching Menschen in Gebiete führt, die bisher weitgehend unberührt waren oder geschützt sind.<ref>[http://www.geocaching.com/seek/cache_details.aspx?guid=d1d95ad4-0160-4d60-847a-4de70826ae9c Beispiel für einen früheren Geocache auf geschützter Vogelbrutinsel]</ref> Dabei können Tiere und Pflanzen gestört werden. Negative Veränderungen von Fledermausquartieren wurden in diesem Zusammenhang bereits nachgewiesen.<ref name="spiegel" /> Owner, die ihre Caches auf ''geocaching.com'' listen, werden angehalten, ihre Caches während der in Deutschland geltenden Fledermausschutzzeit (1. Oktober bis 31. März) für die Dauer der Schutzzeit zu entfernen und als inaktiv (''disabled'') zu markieren, so dass  sie in dieser Zeit nicht gesucht werden können. Bemerkt ein [[#geocaching.com|Reviewer]], dass ein Höhlencache nicht disabled ist, kann er den Cache ''archivieren'', wodurch der Cache nicht mehr im Suchindex gelistet wird.
+
+Beim Verlassen der Wege kann Wild aufgescheucht werden. Das kann negative Auswirkungen auf den Bestand haben – besonders für die Nachkommen und im Winter, wenn das Nahrungsangebot knapp ist und Energiereserven durch Winterschlaf oder Winterruhe geschont werden sollen.
+Nach intensiver Diskussion werden seit 2011 zumindest in Franken keine neuen Höhlencaches mehr von den „Reviewern“ bei ''geocaching.com'' freigeschaltet.
+
+Geocaching in Jagdrevieren kann unter Umständen sowohl die Jagdausübung als auch den Geocacher selbst gefährden. Vor allem in Dämmerung und Dunkelheit besteht die Gefahr, nicht erkannt und mit Wild verwechselt zu werden. Von Jagdaufsehern und Jägern werden vor allem Nachtcaches kritisiert.<ref>http://www.geoclub.de/viewforum.php?f=109</ref>
+
+Auch den Geocachern selbst ist dieses Problem bereits bewusst geworden, was u.&nbsp;a. schon zu Bildungsveranstaltungen und Konferenzen führte.<ref>http://www.gecko-konferenz.de/index.php/de/ Beispiel für eine solche Veranstaltung</ref>
+
+Innerhalb der Geocaching-Gemeinschaft wird die zunehmende Popularität und die damit verbundene rasch wachsende Zahl versteckter Caches teilweise kritisch betrachtet und kontrovers diskutiert, da das Spiel nicht mehr  „im Verborgenen“ stattfindet und ein (gefühltes) Absinken des Niveaus beobachtet wird.
+
+In der letzten Zeit erfreuen sich auch sogenannte ''Powertrails'' und ''Ehrentafeln'' größter Beliebtheit. Hierbei werden gleichzeit sehr viele Caches (meist Tradis) innerhalb möglichst kürzester Abstände ausgelegt. Dieses führt meist zu regelrechten Massenanstürmen von Geocachern welches auch innerhalb kurzer Zeit deutlich sichtbare Suchspuren in der Natur hinterlässt.
+
+== Verwandte Themen ==
+Ähnliche Freizeitbeschäftigungen mit Schwerpunkt auf Wettbewerb sind [[Geodashing]], das [[Geograph (Projekt)|Geograph]]-Projekt und das Besuchen von [[Konfluenzpunkt]]en. Geocaching lässt sich auch mit [[Bookcrossing]] verbinden. Eine weitere Spielart ist [[Waymarking]], hierbei geht es darum, interessante Punkte in der Natur (zum Beispiel Berggipfel) oder spezielle Gebäude (wie Wassertürme) aufzufinden (zu fotografieren und die Koordinaten zu ermitteln), aber auch weniger spezielle Punkte können geloggt werden (beispielsweise Restaurants). Mehr auf den Wettbewerbsgedanken ausgerichtet ist das Spiel ''GPS-Challenge'', bei dem es um das Ablaufen oder -fahren von [[Wegpunkt]]en mit Hilfe von GPS in möglichst kurzer Zeit, das sog. ''Race'', geht.
+
+Nur auf Smartphone-Nutzer ist das Spiel [[Munzee]] ausgerichtet, dort werden [[QR-Code]]s anstelle von Dosen versteckt und durch das Scannen erhält der Spieler Punkte auf seinem Spielerkonto gutgeschrieben. Voraussetzung ist das Scannen in der Nähe der hinterlegten Koordinaten, die App prüft beim Scannen die Geokoordinaten.<ref>http://munzee-info.blogspot.de/</ref>
+
+Als Überbegriff für positionsbezogene Spiele, die mobile Endgeräte und Technologien wie [[Global Positioning System|GPS]] verwenden, ist auch der englische Begriff '[[Location-based Game]]s' gebräuchlich.
+
+Das schon ältere [[Letterboxing]] könnte man als Geocaching ohne GPS auffassen. Auch hier geht es um die Suche von Schätzen anhand von Hinweisen, die hier jedoch ohne Zuhilfenahme von genauen Koordinaten, sondern nur anhand der Beschreibungen und eines [[Kompass]]es lokalisiert werden müssen. Eine Besonderheit des Letterboxing besteht darin, dass im Schatz ein spezieller Stempel enthalten ist, der das persönliche Logbuch eines Finders zieren darf, so wie umgekehrt der persönliche Stempelabdruck eines jeden Finders im Logbuch des Schatzes hinterlassen wird.
+Eine besonders lange und vielfältige Tradition hat das Letterboxing in [[Dartmoor]]. Es gibt dort echte Letterboxfreaks. Nichts anderes als die umtriebige Suche nach neuen „Boxes“ treibt diese Menschen. Natürlich ist es mittlerweile möglich, Bücher mit Verzeichnissen vieler Briefkastenorte zu kaufen. Man kann auch jederzeit neue „Briefkästen“ einrichten. Die in den Letterboxes befindlichen Briefe sind vom Finder mit einem Hinweis (eigener Stempelabdruck) und dem zurückgelassenen Stempel des Vorbenutzers der Letterbox, an den Besitzer zu senden, ähnlich einer [[Flaschenpost]]sendung, bei der der Sender auf eine Antwort vom Finder wartet.
+
+Eine Variante der Letterboxes sind die „Moving Boxes“: Kleine Schachteln, die sich in den größeren Behältern befinden. Man schreibt hinein, wo man sie gefunden hat und trägt sie weiter bis zur nächsten Letterbox, wo man sie für den nächsten Wanderer hinterlässt.
+
+Insgesamt gibt es angeblich über 3000 Letterboxes in Dartmoor. Sie sind alle verschieden, manche sind dekoriert und viele sind mit witzigen und humorvollen Kommentaren versehen. Wieder andere enthalten Informationen über die Geschichte oder Legenden des Moors. Wenn ein Besucher eine solche Letterbox findet, stempelt und unterschreibt er das Gästebuch. Mancher hat sein eigenes „Letterbox Book“, in das er alle Stempel einträgt, die er findet. Viele haben einen eigenen Stempel, den sie im Austausch mit dem Gefundenen in der Box lassen.
+
+== Geocacher-Glossar ==
+Geocacher verwenden für Unkundige oftmals völlig unverständliche Ausdrücke oder Abkürzungen. Nachfolgende Begriffe (in alphabetischer Reihenfolge) werden häufig verwendet:<ref>[http://www.cachewiki.de/wiki/Abk%C3%BCrzungen Cachewiki: Verwendete Abkürzungen im Geocaching]</ref>
+
+* +1 - Im Logeintrag eines Finders meist Ausdruck der Enttäuschung über einen als sehr uninteressant empfundenen Cache, reiner Statistikpunkt.
+* Besserverstecker – Cacher, der den Behälter an einem (anderen) „besseren“ Ort platziert oder besser tarnt, als ursprünglich vom Owner vorgesehen.
+* BWW (''Buchstabenwortwert'') - Es wird den Buchstaben eines Wortes ein numerischer Wert zugeordnet. Bsp: A=1, B=2 usw.
+* Cacherautobahn – Deutlich sichtbare Trampelpfade in Wald und Flur, angelegt von Suchenden nahe von Verstecken und Stationen
+* CITO (''Cache in Trash out'') – Initiative, um beim Cachen den Wald vom Müll ([[Englische Sprache|engl.]] Trash) zu befreien.
+* CO (''Cache Owner'') → Owner.
+* DFDC – Grußformel beim Loggen: ''Danke für den Cache'', auch DfdD ''Danke für die Dose'', TFTC (engl. ''thank you for the cache'') oder MPLC ([[Französische Sprache|franz.]] ''merci pour le cache'').
+* DNF (''Did Not Find'') - Versteck nicht gefunden
+* ECA – Erweiterte Cacher-Ausrüstung (UV-Lampe, Greifer, Teleskopmagnet und andere „Gadgets“)<ref>[http://www.cachewiki.de/wiki/Ausr%C3%BCstung Cachewiki: Ausrüstung]</ref>
+* FTF (''First To Find'') - Als Erster einen neuen Cache gefunden
+* FTL (''First To Lose'') - Unter FTF-Jägern vorkommende selbstironische oder verbitterte Bezeichnung für einen STF, wenn der FTF in einem „Rennen“ knapp verpasst wurde
+* Hasengrill – auffällige Tarnung eines Caches (typischerweise durch parallel darüber gelegte Äste)
+* Hint – Andeutung, Hinweis oder Tipp zu einem Versteck oder einer Station
+* Homezone - Das Gebiet rund um den Wohnort eines Geocachers
+* Muggle, Muggel – Außenstehende, die Geocaching nicht kennen (den [[Harry Potter|Harry-Potter-Büchern]] entlehnt)
+* [[ROT13]] – zusätzliche Hints werden in der Textbeschreibung eines Caches häufig mit diesem einfachen Codierverfahren verschleiert, um ein versehentliches Durchlesen eines Spoilers zu unterbinden
+* Owner (''Besitzer'')– Derjenige, der den Cache versteckt hat
+* Powertrail - Cacheserie, die aus mindestens 20 Traditional Caches besteht, die räumlich eng beieinander liegen
+* Sissicacher – Cacher, der sich ungern schmutzig machen möchte
+* Spoiler (engl. ''Verderber''/''Vermieser'') – Bild oder Texthinweis, um das Auffinden eines Versteckes zu erleichtern
+* STF (''Second to find'') - Als Zweiter gefunden
+* TB (''Travelbug'') - Anhänger mit eingestanzter Nummer, der von Cache zu Cache wandern soll
+* Trauma-Cache – Cache, den man über lange Zeit und trotz mehrfacher Suche nicht heben kann
+* TTF (''Third to find'') - Als Dritter gefunden
+* TNLN (''Took nothing - left nothing'')) - Keinen Tauschgegenstand entnommen, aber auch keinen hinterlassen
+
+Weitere ''Fachausdrücke'' findet man auch in diversen Internetforen. <ref>[http://forum.tafari.at/thread-2516.html Cacher-Slang Wörterbuch] der Österreichischen Community</ref>
+
+== Einzelnachweise ==
+<references />
+
+== Literatur ==
+* Markus Gründel&Steven Ponndorf: ''Geocaching II (OutdoorHandbuch Band 328)'', aus der Reihe: ''Basiswissen für draußen'', Conrad Stein Verlag, 2013, ISBN 978-3-86686-428-3
+* Markus Gründel: ''Geocaching (OutdoorHandbuch Band 203)'', aus der Reihe: ''Basiswissen für draußen'', Conrad Stein Verlag, 4.Auflage 2013, ISBN 978-3-86686-384-2
+* Ramona Jakob: ''Abenteuer Geocaching - Die moderne Schatzsuche für Einsteiger'', Moses Verlag, 2012 1. & 2. Auflage, ISBN 978-3-89777-647-0
+* [[Manuel Andrack]]: ''2 mit Grips und GPS. Cache! Wir finden ihn!'' [[mixtvision Verlag]], 2009, ISBN 978-3-939435-22-8
+* [[Bernhard Hoëcker]]: ''Aufzeichnungen eines Schnitzeljägers – Mit Gëocaching zurück zur Natur''. [[Rowohlt Verlag]], Berlin 2007, ISBN 978-3-499-62252-6
+* Thomas Sadewasser: ''Geocaching Abenteuer. Verstecken und Finden mit GPS''. Books on Demand GmbH, 2. Auflage 2008, ISBN 978-3-8334-6872-8
+* Daniel Telaar: ''Geocaching – Eine kontextuelle Untersuchung der deutschsprachigen Geocaching-Community''. Diplomarbeit, [[Westfälische Wilhelms-Universität]] zu Münster, 2007 ([http://da-geocaching.dtelaar.de/ hier als PDF-Datei verfügbar])
+
+== Weblinks ==
+<!-- Bitte KEINE regionalen Webseiten oder Foren verlinken, NUR allgemein weiterführende Seiten, nur Links zu den größten Cache-Datenbanken – Wikipedia ist keine Linksammlung! siehe „Wikipedia:Weblinks“ -->
+<!-- Detailliertere Infos/Links zu Geocaching-Datenbanken bitte im Artikel Geocache-Datenbanken einarbeiten -->
+{{Commonscat|Geocaching|3=S}}
+* [http://www.cachewiki.de/ Cachewiki.de] - Wiki über Geocaching
+* [http://www.geocaching.com/ Geocaching.com] – Weltweit größte internationale Geocaching-Datenbank (mehrsprachig, in den Grundfunktionen kostenfrei)
+* [http://www.geocaching.de/ Geocaching.de] – Deutsche Informationsseite zum Geocaching
+* [http://www.opencaching.com Opencaching.com] weltweite Geocachingdatenbank von [[Garmin]]
+* [http://www.opencaching.de Opencaching.de] – Deutsche kostenfreie Geocaching-Datenbank
+* [http://www.opencaching.eu/ Opencaching-Netzwerk] – Übersichtsseite der freien, nicht kommerziellen Opencaching-Seiten
+* [http://www.swissgeocache.ch/ Swissgeocache.ch] – Schweizer Informationsseite zum Geocaching
+* [http://www.reviewer.at reviewer.at] – Offizielles Infoportal der Österreichischen Reviewer - Infos zum Suchen und Verstecken von Geocaches in Österreich inkl. [http://forum.tafari.at/forum-16.html Supportforum]
+* [http://www.geocaching.at Geocaching.at] – Österreichische Informationsseite zum Geocaching
+
+{{Normdaten|TYP=s|GND=7580165-6}}
+
+[[Kategorie:Hobby]]
+[[Kategorie:Netzkultur]]
+[[Kategorie:Internetanwendung]]
+[[Kategorie:Geländespiel]]
+[[Kategorie:Navigation]]
+[[Kategorie:Outdoor]]
+[[Kategorie:Geocaching| ]]
+[[Kategorie:Natursportart]]
+[[Kategorie:Wikipedia:Artikel-Feedback/Artikel des Tages oder Schon gewusst]]
+
+{{Lesenswert|8. Dezember 2012|111371193}}
