@@ -225,7 +225,7 @@ PHP_FUNCTION(utf8_substr)
 }
 /* }}} utf8_substr */
 
-/* {{{ proto int utf8_strpos(string $haystack , mixed $needle [, int $offset = 0])
+/* {{{ proto int utf8_strpos(string haystack , mixed needle [, int offset = 0])
    */
 PHP_FUNCTION(utf8_strpos)
 {
@@ -305,7 +305,7 @@ PHP_FUNCTION(utf8_strpos)
 }
 /* }}} utf8_str_strpos */
 
-/* {{{ proto int utf8_strpos(string $haystack , mixed $needle [, int $offset = 0])
+/* {{{ proto int utf8_strrpos(string haystack , mixed needle [, int offset = 0])
    */
 PHP_FUNCTION(utf8_strrpos)
 {
@@ -624,7 +624,7 @@ PHP_FUNCTION(string_is_ascii)
 }
 /* }}} string_is_ascii */
 
-/* {{{ proto bool strip_non_ascii(string str)
+/* {{{ proto string strip_non_ascii(string str)
    */
 PHP_FUNCTION(strip_non_ascii)
 {
