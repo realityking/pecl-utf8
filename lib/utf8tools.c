@@ -232,7 +232,7 @@ utf8_char_from_codepoint(uint32_t codepoint)
 }
 
 char*
-utf8_recover(const uint8_t *s, int length_bytes)
+utf8_recover(const uint8_t *s, int length_bytes, int *result_len)
 {
 	uint32_t codepoint;
 	uint32_t prev, current;
@@ -241,7 +241,6 @@ utf8_recover(const uint8_t *s, int length_bytes)
 
 	/* There's probably a way to save some memory here */
 	out = (char*) emalloc(3 * length_bytes * sizeof(unsigned char));
-
 	begin = out;
 
 	for (prev = 0, current = 0, i = 0; i <= length_bytes; prev = current, s++, i++) {
@@ -269,7 +268,8 @@ utf8_recover(const uint8_t *s, int length_bytes)
 
 	out[0] = '\0';
 
-	begin = (char*) erealloc(begin, (strlen(begin) + 1) * sizeof(char));
+	*result_len = strlen(begin);
+	begin = (char*) erealloc(begin, (*result_len + 1) * sizeof(char));
 
 	return begin;
 }

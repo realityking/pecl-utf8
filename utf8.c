@@ -529,16 +529,16 @@ PHP_FUNCTION(utf8_strrev)
 PHP_FUNCTION(utf8_recover)
 {
 	unsigned char *str = NULL;
-	int   str_len = 0;
+	int   str_len = 0, result_len;
 	char *result = NULL;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
 		return;
 	}
 
-	result = utf8_recover(str, str_len);
+	result = utf8_recover(str, str_len, &result_len);
 
-	RETURN_STRING(result, 0);
+	RETURN_STRINGL(result, result_len, 0);
 }
 /* }}} utf8_recover */
 
