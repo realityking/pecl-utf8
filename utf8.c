@@ -590,6 +590,7 @@ PHP_FUNCTION(utf8_ord)
 PHP_FUNCTION(utf8_has_bom)
 {
 	char8_t  *str = NULL;
+	char8_t   maybe_bom[4];
 	int       str_len = 0;
 	zend_bool result;
 
@@ -597,9 +598,20 @@ PHP_FUNCTION(utf8_has_bom)
 		return;
 	}
 
-	result = utf8_has_bom(str, str_len);
+	if (str_len <= 2) {
+		RETURN_FALSE;
+	}
 
-	RETURN_BOOL(result);
+	/*
+ 	 * Inspired by microutf8 from Tomasz Konojacki
+	 */
+	strncpy((char*)maybe_bom, (char*)str, 3);
+	maybe_bom[3] = '\0';
+	if (strcmp((char*)maybe_bom, (char*)(char8_t*)"\xEF\xBB\xBF") == 0) {
+		RETURN_TRUE;
+	}
+
+	RETURN_FALSE;
 }
 /* }}} utf8_has_bom */
 

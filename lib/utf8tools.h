@@ -11,7 +11,6 @@ typedef uint8_t char8_t;
 
 zend_bool utf8_is_valid(const char8_t *s, int length_bytes);
 size_t utf8_strlen(const char8_t *s, zend_bool *valid);
-zend_bool utf8_has_bom(const char8_t *s, int str_len);
 char8_t* utf8_substr(const char8_t *s, int start, int len, zend_bool *valid);
 uint32_t utf8_ord(const char8_t *s, zend_bool *valid);
 int utf8_get_next_n_chars_length(const char8_t *s, int n, zend_bool *valid);

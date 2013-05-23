@@ -65,27 +65,6 @@ utf8_strlen(const char8_t *s, zend_bool *valid)
 }
 
 /*
- * Functions inspired by microutf8 from Tomasz Konojacki
- */
-#define UTF8_BOM "\xEF\xBB\xBF" /* note that it need to be casted to uint8_t* */
-
-zend_bool
-utf8_has_bom(const char8_t *s, int str_len)
-{
-	char8_t maybe_bom[4];
-
-	if (str_len <= 2)
-		return 0;
-
-	strncpy((char*)maybe_bom, (char*)s, 3);
-	maybe_bom[3] = 0;
-	if (strcmp((char*)maybe_bom, (char*)(char8_t*)UTF8_BOM) == 0)
-		return 1;
-	else
-		return 0;
-}
-
-/*
  * Author: Mikko Lehtonen
  * See: https://github.com/scoopr/wtf8/blob/master/wtf8.h
  */
