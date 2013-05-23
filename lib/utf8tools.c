@@ -290,7 +290,7 @@ windows1252_to_utf8(const char *str, int str_len, char8_t **result_str, int *res
 	unsigned char *ustr = (unsigned char*)str;
 
 	*result_len = 0;
-	result = (char8_t*) emalloc((3 * str_len + 1));
+	result = (char8_t*) emalloc(3 * str_len + 1);
 	begin = result;
 
 	while (*ustr) {
@@ -394,7 +394,7 @@ utf8_to_windows1252(const char8_t *str, int str_len, char **result_str, int *res
 	char    *result, *begin;
 
 	*result_len = 0;
-	result = (char*) emalloc((str_len + 1));
+	result = (char*) emalloc(str_len + 1);
 	begin = result;
 
 	for (; *str; ++str) {

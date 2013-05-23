@@ -496,7 +496,7 @@ PHP_FUNCTION(utf8_strrev)
 		RETURN_FALSE;
 	}
 
-	result = emalloc((str_len + 1));
+	result = emalloc(str_len + 1);
 	/* We reverse the string in memory so we copy it beforehand */
 	strcpy(result, str);
 
@@ -651,7 +651,7 @@ PHP_FUNCTION(strip_non_ascii)
 		RETURN_STRINGL(str, 0, 1);
 	}
 
-	result = (char*) emalloc((str_len + 1));
+	result = (char*) emalloc(str_len + 1);
 	begin = result;
 
 	while (*str) {
