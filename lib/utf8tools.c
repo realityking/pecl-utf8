@@ -240,7 +240,7 @@ utf8_recover(const uint8_t *s, int length_bytes, int *result_len)
 	char    *out, *begin;
 
 	/* There's probably a way to save some memory here */
-	out = (char*) emalloc(3 * length_bytes * sizeof(unsigned char));
+	out = (char*) emalloc(3 * length_bytes);
 	begin = out;
 
 	for (prev = 0, current = 0, i = 0; i <= length_bytes; prev = current, s++, i++) {
@@ -269,7 +269,7 @@ utf8_recover(const uint8_t *s, int length_bytes, int *result_len)
 	out[0] = '\0';
 
 	*result_len = strlen(begin);
-	begin = (char*) erealloc(begin, (*result_len + 1) * sizeof(char));
+	begin = (char*) erealloc(begin, (*result_len + 1));
 
 	return begin;
 }
@@ -312,7 +312,7 @@ windows1252_to_utf8(const char *str, int str_len, uint8_t **result_str, int *res
 	unsigned char *ustr = (unsigned char*)str;
 
 	*result_len = 0;
-	result = (uint8_t*) emalloc((3 * str_len + 1) * sizeof(uint8_t));
+	result = (uint8_t*) emalloc((3 * str_len + 1));
 	begin = result;
 
 	while (*ustr) {
@@ -335,7 +335,7 @@ windows1252_to_utf8(const char *str, int str_len, uint8_t **result_str, int *res
 	*result = '\0';
 
 	if (*result_len != str_len) {
-		begin = (uint8_t*) erealloc(begin, (*result_len + 1) * sizeof(uint8_t));
+		begin = (uint8_t*) erealloc(begin, (*result_len + 1));
 	}
 
 	*result_str = begin;
@@ -416,7 +416,7 @@ utf8_to_windows1252(const uint8_t *str, int str_len, char **result_str, int *res
 	unsigned char *result, *begin;
 
 	*result_len = 0;
-	result = (unsigned char*) emalloc((str_len + 1) * sizeof(unsigned char));
+	result = (unsigned char*) emalloc((str_len + 1));
 	begin = result;
 
 	for (; *str; ++str) {
@@ -439,7 +439,7 @@ utf8_to_windows1252(const uint8_t *str, int str_len, char **result_str, int *res
 	*result = '\0';
 
 	if (*result_len != str_len) {
-		begin = (unsigned char*) erealloc(begin, (*result_len + 1) * sizeof(unsigned char));
+		begin = (unsigned char*) erealloc(begin, (*result_len + 1));
 	}
 
 	*result_str = (char*) begin;

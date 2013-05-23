@@ -82,7 +82,7 @@ static int utf8_needle_char(zval *needle, char **target TSRMLS_DC)
 			*target = utf8_char_from_codepoint((uint32_t)Z_LVAL_P(needle));
 			return SUCCESS;
 		case IS_NULL:
-			*target = ecalloc(1, sizeof(char));
+			*target = ecalloc(1, 1);
 			*target[0] = '\0';
 			return SUCCESS;
 		case IS_DOUBLE:
@@ -497,7 +497,7 @@ PHP_FUNCTION(utf8_strrev)
 		RETURN_FALSE;
 	}
 
-	result = emalloc((str_len + 1) * sizeof(char));
+	result = emalloc((str_len + 1));
 	/* We reverse the string in memory so we copy it beforehand */
 	strcpy(result, str);
 
@@ -641,7 +641,7 @@ PHP_FUNCTION(strip_non_ascii)
 		RETURN_STRINGL(str, 0, 1);
 	}
 
-	result = (char*) emalloc((str_len + 1) * sizeof(char));
+	result = (char*) emalloc((str_len + 1));
 	begin = result;
 
 	while (*str) {
@@ -654,7 +654,7 @@ PHP_FUNCTION(strip_non_ascii)
 	*result = '\0';
 
 	if (result_len != str_len) {
-		begin = (char*) erealloc(begin, (result_len + 1) * sizeof(char));
+		begin = (char*) erealloc(begin, (result_len + 1));
 	}
 
 	RETURN_STRINGL(begin, result_len, 0);
