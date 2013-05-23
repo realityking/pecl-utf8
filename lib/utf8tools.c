@@ -49,7 +49,7 @@ decode(uint32_t *state, uint32_t *codep, uint32_t byte)
 }
 
 size_t
-utf8_strlen(const uint8_t *s, int *valid)
+utf8_strlen(const uint8_t *s, zend_bool *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
@@ -69,7 +69,7 @@ utf8_strlen(const uint8_t *s, int *valid)
  */
 #define UTF8_BOM "\xEF\xBB\xBF" /* note that it need to be casted to uint8_t* */
 
-int
+zend_bool
 utf8_has_bom(const uint8_t *s, int str_len)
 {
 	uint8_t maybe_bom[4];
@@ -124,7 +124,7 @@ static inline char* utf8_encode(uint32_t codepoint, char *str, int *len)
  * Author: Rouven Weßling
  * License: PHP License 3.01
  */
-int
+zend_bool
 utf8_is_valid(const uint8_t *s, int length_bytes)
 {
 	uint32_t codepoint;
@@ -142,7 +142,7 @@ utf8_is_valid(const uint8_t *s, int length_bytes)
 }
 
 char*
-utf8_substr(const uint8_t *s, int start, int len, int *valid)
+utf8_substr(const uint8_t *s, int start, int len, zend_bool *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
@@ -181,7 +181,7 @@ utf8_substr(const uint8_t *s, int start, int len, int *valid)
 }
 
 uint32_t
-utf8_ord(const uint8_t *s, int *valid)
+utf8_ord(const uint8_t *s, zend_bool *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
@@ -196,7 +196,7 @@ utf8_ord(const uint8_t *s, int *valid)
 }
 
 int
-utf8_get_next_n_chars_length(const uint8_t *s, int n, int *valid)
+utf8_get_next_n_chars_length(const uint8_t *s, int n, zend_bool *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
@@ -275,7 +275,7 @@ utf8_recover(const uint8_t *s, int length_bytes)
 }
 
 size_t
-utf8_strlen_maxbytes(const uint8_t *s, long max_bytes, int *valid)
+utf8_strlen_maxbytes(const uint8_t *s, long max_bytes, zend_bool *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
