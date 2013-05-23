@@ -171,7 +171,7 @@ utf8_substr(const uint8_t *s, int start, int len, zend_bool *valid)
 		length_bytes += 1;
 	}
 
-	out = ecalloc(length_bytes + 1, sizeof(char));
+	out = emalloc(length_bytes + 1);
 	memcpy(out, str_start + start_bytes, length_bytes);
 	out[length_bytes] = '\0';
 
@@ -223,7 +223,7 @@ utf8_char_from_codepoint(uint32_t codepoint)
 	char *out, *begin;
 	int len;
 
-	out = ecalloc(5, sizeof(char));
+	out = emalloc(5);
 	begin = out;
 	out = utf8_encode(codepoint, out, &len);
 	out[0] = '\0';
