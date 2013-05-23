@@ -43,12 +43,6 @@ extern "C" {
 extern zend_module_entry utf8_module_entry;
 #define phpext_utf8_ptr &utf8_module_entry
 
-#ifdef PHP_WIN32
-#define PHP_UTF8_API __declspec(dllexport)
-#else
-#define PHP_UTF8_API
-#endif
-
 PHP_MINFO_FUNCTION(utf8);
 
 #ifdef ZTS

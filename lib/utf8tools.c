@@ -35,7 +35,7 @@ static const char8_t utf8d[] = {
 	12,36,12,12,12,12,12,12,12,12,12,12,
 };
 
-uint32_t inline
+inline uint32_t
 decode(uint32_t *state, uint32_t *codep, uint32_t byte)
 {
 	uint32_t type = utf8d[byte];
@@ -48,7 +48,7 @@ decode(uint32_t *state, uint32_t *codep, uint32_t byte)
 	return *state;
 }
 
-size_t
+UTF8_API size_t
 utf8_strlen(const char8_t *s, zend_bool *valid)
 {
 	uint32_t codepoint;
@@ -68,7 +68,8 @@ utf8_strlen(const char8_t *s, zend_bool *valid)
  * Author: Mikko Lehtonen
  * See: https://github.com/scoopr/wtf8/blob/master/wtf8.h
  */
-static inline char8_t* utf8_encode(uint32_t codepoint, const char8_t *str, int *len)
+static inline char8_t*
+utf8_encode(uint32_t codepoint, const char8_t *str, int *len)
 {
 	char8_t *ustr = (char8_t*)str;
 	*len = 0;
@@ -103,7 +104,7 @@ static inline char8_t* utf8_encode(uint32_t codepoint, const char8_t *str, int *
  * Author: Rouven Weßling
  * License: PHP License 3.01
  */
-zend_bool
+UTF8_API zend_bool
 utf8_is_valid(const char8_t *s, int length_bytes)
 {
 	uint32_t codepoint;
@@ -120,7 +121,7 @@ utf8_is_valid(const char8_t *s, int length_bytes)
 	return state == UTF8_ACCEPT;
 }
 
-char8_t*
+UTF8_API char8_t*
 utf8_substr(const char8_t *s, int start, int len, zend_bool *valid)
 {
 	uint32_t codepoint;
@@ -158,7 +159,7 @@ utf8_substr(const char8_t *s, int start, int len, zend_bool *valid)
 	return out;
 }
 
-uint32_t
+UTF8_API uint32_t
 utf8_ord(const char8_t *s, zend_bool *valid)
 {
 	uint32_t codepoint;
@@ -173,7 +174,7 @@ utf8_ord(const char8_t *s, zend_bool *valid)
 	return codepoint;
 }
 
-int
+UTF8_API int
 utf8_get_next_n_chars_length(const char8_t *s, int n, zend_bool *valid)
 {
 	uint32_t codepoint;
@@ -195,7 +196,7 @@ utf8_get_next_n_chars_length(const char8_t *s, int n, zend_bool *valid)
 	return bytes;
 }
 
-char8_t*
+UTF8_API char8_t*
 utf8_char_from_codepoint(uint32_t codepoint)
 {
 	char8_t *out, *begin;
@@ -209,7 +210,7 @@ utf8_char_from_codepoint(uint32_t codepoint)
 	return begin;
 }
 
-char8_t*
+UTF8_API char8_t*
 utf8_recover(const char8_t *s, int length_bytes, int *result_len)
 {
 	uint32_t codepoint;
@@ -252,7 +253,7 @@ utf8_recover(const char8_t *s, int length_bytes, int *result_len)
 	return begin;
 }
 
-size_t
+UTF8_API size_t
 utf8_strlen_maxbytes(const char8_t *s, long max_bytes, zend_bool *valid)
 {
 	uint32_t codepoint;
@@ -281,7 +282,7 @@ static const uint32_t windows1252Codepoint[] = {
 	0x2022, 0x2013, 0x2014, 0x02DC, 0x2122, 0x0161, 0x203A, 0x0153, 0x009D, 0x017E, 0x0178
 };
 
-void
+UTF8_API void
 windows1252_to_utf8(const char *str, int str_len, char8_t **result_str, int *result_len)
 {
 	char8_t *result, *begin;
@@ -319,7 +320,8 @@ windows1252_to_utf8(const char *str, int str_len, char8_t **result_str, int *res
 	*result_str = begin;
 }
 
-static inline unsigned char to_windows1252(uint32_t codepoint)
+static inline char
+to_windows1252(uint32_t codepoint)
 {
 	switch (codepoint) {
 		case 0x20ac:
@@ -386,7 +388,7 @@ static inline unsigned char to_windows1252(uint32_t codepoint)
 	}
 }
 
-void
+UTF8_API void
 utf8_to_windows1252(const char8_t *str, int str_len, char **result_str, int *result_len)
 {
 	uint32_t codepoint;
