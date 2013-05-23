@@ -74,7 +74,7 @@ PHP_MINFO_FUNCTION(utf8)
 
 /* {{{ utf8_needle_char
  */
-static int utf8_needle_char(zval *needle, char **target TSRMLS_DC)
+static int utf8_needle_char(zval *needle, char8_t **target TSRMLS_DC)
 {
 	switch (Z_TYPE_P(needle)) {
 		case IS_LONG:
@@ -101,8 +101,8 @@ static int utf8_needle_char(zval *needle, char **target TSRMLS_DC)
    */
 PHP_FUNCTION(utf8_is_valid)
 {
-	unsigned char *str = NULL;
-	int str_len = 0;
+	char8_t  *str = NULL;
+	int       str_len = 0;
 	zend_bool valid = 0;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
@@ -124,7 +124,7 @@ PHP_FUNCTION(utf8_is_valid)
    */
 PHP_FUNCTION(utf8_strlen)
 {
-	unsigned char *str = NULL;
+	char8_t  *str = NULL;
 	int       str_len = 0;
 	zend_bool valid;
 	size_t    count;
@@ -152,10 +152,9 @@ PHP_FUNCTION(utf8_strlen)
    */
 PHP_FUNCTION(utf8_substr)
 {
-	unsigned char *str = NULL;
-	char     *result = NULL;
-	int       str_len = 0;
-	int       utf8_len = 0;
+	char8_t  *str = NULL;
+	char8_t  *result = NULL;
+	int       str_len = 0, utf8_len = 0;
 	zend_bool valid;
 	long      l = 0, f;
 	int       argc = ZEND_NUM_ARGS();
@@ -221,7 +220,7 @@ PHP_FUNCTION(utf8_substr)
 
 	result = utf8_substr(str, f, l, &valid);
 
-	RETURN_STRING(result, 0);
+	RETURN_STRING((char*)result, 0);
 }
 /* }}} utf8_substr */
 
@@ -232,7 +231,7 @@ PHP_FUNCTION(utf8_strpos)
 	zval     *needle;
 	char     *haystack;
 	char     *found = NULL;
-	char     *needle_char;
+	char8_t  *needle_char;
 	long      offset = 0;
 	long      offset_bytes = 0;
 	int       haystack_len;
@@ -244,7 +243,7 @@ PHP_FUNCTION(utf8_strpos)
 		return;
 	}
 
-	haystack_utf8_len = utf8_strlen((uint8_t*)haystack, &valid);
+	haystack_utf8_len = utf8_strlen((char8_t*)haystack, &valid);
 
 	if (!valid) {
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Haystack does not contain valid UTF-8");
@@ -257,7 +256,7 @@ PHP_FUNCTION(utf8_strpos)
 	}
 
 	if (offset != 0) {
-		offset_bytes = utf8_get_next_n_chars_length((uint8_t*)haystack, offset, &valid);
+		offset_bytes = utf8_get_next_n_chars_length((char8_t*)haystack, offset, &valid);
 	}
 
 	if (Z_TYPE_P(needle) == IS_STRING) {
@@ -266,7 +265,7 @@ PHP_FUNCTION(utf8_strpos)
 			RETURN_FALSE;
 		}
 
-		valid = utf8_is_valid((uint8_t*)Z_STRVAL_P(needle), Z_STRLEN_P(needle));
+		valid = utf8_is_valid((char8_t*)Z_STRVAL_P(needle), Z_STRLEN_P(needle));
 
 		if (!valid) {
 			php_error_docref(NULL TSRMLS_CC, E_WARNING, "Needle does not contain valid UTF-8");
@@ -283,15 +282,15 @@ PHP_FUNCTION(utf8_strpos)
 		}
 
 		found = php_memnstr(haystack + offset_bytes,
-							needle_char,
-							strlen(needle_char),
+							(char*)needle_char,
+							strlen((char*)needle_char),
 		                    haystack + haystack_len);
 
 		efree(needle_char);
 	}
 
 	if (found) {
-		tmp_result = utf8_strlen_maxbytes((uint8_t*)haystack, found - haystack, &valid);
+		tmp_result = utf8_strlen_maxbytes((char8_t*)haystack, found - haystack, &valid);
 
 		if (!valid) {
 			php_error_docref(NULL TSRMLS_CC, E_RECOVERABLE_ERROR, "Could not calculate result.");
@@ -310,7 +309,8 @@ PHP_FUNCTION(utf8_strpos)
 PHP_FUNCTION(utf8_strrpos)
 {
 	zval     *zneedle;
-	char     *needle, *haystack;
+	char8_t  *needle;
+	char     *haystack;
 	int       needle_len, haystack_len;
 	long      offset = 0;
 	char     *p, *e;
@@ -323,7 +323,7 @@ PHP_FUNCTION(utf8_strrpos)
 		RETURN_FALSE;
 	}
 
-	haystack_utf8_len = utf8_strlen((uint8_t*)haystack, &valid);
+	haystack_utf8_len = utf8_strlen((char8_t*)haystack, &valid);
 
 	if (!valid) {
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "Haystack does not contain valid UTF-8");
@@ -343,10 +343,10 @@ PHP_FUNCTION(utf8_strrpos)
 	}
 
 	if (Z_TYPE_P(zneedle) == IS_STRING) {
-		needle = Z_STRVAL_P(zneedle);
+		needle = (char8_t*)Z_STRVAL_P(zneedle);
 		needle_len = Z_STRLEN_P(zneedle);
 
-		valid = utf8_is_valid((uint8_t*)needle, needle_len);
+		valid = utf8_is_valid((char8_t*)needle, needle_len);
 
 		if (!valid) {
 			php_error_docref(NULL TSRMLS_CC, E_WARNING, "Needle does not contain valid UTF-8");
@@ -357,7 +357,7 @@ PHP_FUNCTION(utf8_strrpos)
 			RETURN_FALSE;
 		}
 
-		needle_len = strlen(needle);
+		needle_len = strlen((char*)needle);
 	}
 
 	if ((haystack_len == 0) || (needle_len == 0)) {
@@ -366,13 +366,13 @@ PHP_FUNCTION(utf8_strrpos)
 
 	if (offset >= 0) {
 		if (offset != 0) {
-			offset_bytes = utf8_get_next_n_chars_length((uint8_t*)haystack, offset, &valid);
+			offset_bytes = utf8_get_next_n_chars_length((char8_t*)haystack, offset, &valid);
 		}
 
 		p = haystack + offset_bytes;
 		e = haystack + haystack_len - needle_len;
 	} else {
-		offset_bytes = utf8_get_next_n_chars_length((uint8_t*)haystack, haystack_utf8_len + offset, &valid);
+		offset_bytes = utf8_get_next_n_chars_length((char8_t*)haystack, haystack_utf8_len + offset, &valid);
 		offset_bytes = (haystack_len - offset_bytes) * -1;
 
 		p = haystack;
@@ -403,7 +403,7 @@ PHP_FUNCTION(utf8_strrpos)
 	}
 
 	if (found) {
-		tmp_result = utf8_strlen_maxbytes((uint8_t*)haystack, found - p + (offset > 0 ? offset_bytes : 0), &valid);
+		tmp_result = utf8_strlen_maxbytes((char8_t*)haystack, found - p + (offset > 0 ? offset_bytes : 0), &valid);
 
 		if (!valid) {
 			php_error_docref(NULL TSRMLS_CC, E_RECOVERABLE_ERROR, "Could not calculate result.");
@@ -425,14 +425,13 @@ PHP_FUNCTION(utf8_strrpos)
    */
 PHP_FUNCTION(utf8_str_split)
 {
-	char     *str;
+	char8_t   *str;
 	int       str_len;
 	size_t    utf8_len;
 	long      split_length = 1;
 	zend_bool valid = 0;
-	int       n_reg_segments;
-	char     *p;
-	int       bytes;
+	int       n_reg_segments, bytes;
+	char8_t  *p;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s|l", &str, &str_len, &split_length) == FAILURE) {
 		return;
@@ -443,7 +442,7 @@ PHP_FUNCTION(utf8_str_split)
 		return;
 	}
 
-	utf8_len = utf8_strlen((uint8_t*)str, &valid);
+	utf8_len = utf8_strlen(str, &valid);
 
 	if (!valid) {
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "String does not contain valid UTF-8");
@@ -453,7 +452,7 @@ PHP_FUNCTION(utf8_str_split)
 	array_init_size(return_value, ((utf8_len - 1) / split_length) + 1);
 
 	if (split_length >= utf8_len) {
-		add_next_index_stringl(return_value, str, str_len, 1);
+		add_next_index_stringl(return_value, (char*)str, str_len, 1);
 		return;
 	}
 
@@ -461,13 +460,13 @@ PHP_FUNCTION(utf8_str_split)
 	p = str;
 
 	while (n_reg_segments-- > 0) {
-		bytes = utf8_get_next_n_chars_length((uint8_t*)p, split_length, &valid);
-		add_next_index_stringl(return_value, p, bytes, 1);
+		bytes = utf8_get_next_n_chars_length(p, split_length, &valid);
+		add_next_index_stringl(return_value, (char*)p, bytes, 1);
 		p += bytes;
 	}
 
 	if (p != (str + str_len)) {
-		add_next_index_stringl(return_value, p, (str + str_len - p), 1);
+		add_next_index_stringl(return_value, (char*)p, (str + str_len - p), 1);
 	}
 }
 /* }}} utf8_str_split */
@@ -528,9 +527,8 @@ PHP_FUNCTION(utf8_strrev)
    */
 PHP_FUNCTION(utf8_recover)
 {
-	unsigned char *str = NULL;
+	char8_t *str, *result;
 	int   str_len = 0, result_len;
-	char *result = NULL;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
 		return;
@@ -538,7 +536,7 @@ PHP_FUNCTION(utf8_recover)
 
 	result = utf8_recover(str, str_len, &result_len);
 
-	RETURN_STRINGL(result, result_len, 0);
+	RETURN_STRINGL((char*)result, result_len, 0);
 }
 /* }}} utf8_recover */
 
@@ -546,8 +544,8 @@ PHP_FUNCTION(utf8_recover)
    */
 PHP_FUNCTION(utf8_chr)
 {
-	long  c;
-	char* string;
+	long     c;
+	char8_t *string;
 
 	if (zend_parse_parameters_ex(ZEND_PARSE_PARAMS_QUIET, ZEND_NUM_ARGS() TSRMLS_CC, "l", &c) == FAILURE) {
 		return;
@@ -555,7 +553,7 @@ PHP_FUNCTION(utf8_chr)
 
 	string = utf8_char_from_codepoint((uint32_t)c);
 
-	RETURN_STRING(string, 0);
+	RETURN_STRING((char*)string, 0);
 }
 /* }}} utf8_chr */
 
@@ -563,7 +561,7 @@ PHP_FUNCTION(utf8_chr)
    */
 PHP_FUNCTION(utf8_ord)
 {
-	unsigned char *str = NULL;
+	char8_t  *str = NULL;
 	int       str_len = 0;
 	zend_bool valid;
 	uint32_t  codepoint;
@@ -591,7 +589,7 @@ PHP_FUNCTION(utf8_ord)
    */
 PHP_FUNCTION(utf8_has_bom)
 {
-	char     *str = NULL;
+	char8_t  *str = NULL;
 	int       str_len = 0;
 	zend_bool result;
 
@@ -599,7 +597,7 @@ PHP_FUNCTION(utf8_has_bom)
 		return;
 	}
 
-	result = utf8_has_bom((uint8_t*)str, str_len);
+	result = utf8_has_bom(str, str_len);
 
 	RETURN_BOOL(result);
 }
@@ -609,7 +607,7 @@ PHP_FUNCTION(utf8_has_bom)
    */
 PHP_FUNCTION(string_is_ascii)
 {
-	char *str = NULL;
+	unsigned char *str = NULL;
 	int   str_len = 0;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
@@ -617,7 +615,7 @@ PHP_FUNCTION(string_is_ascii)
 	}
 
 	while (*str) {
-		if ((unsigned char)*str++ > 0x7f) {
+		if (*str++ > 0x7f) {
 			RETURN_FALSE;
 		}
 	}
@@ -667,7 +665,7 @@ PHP_FUNCTION(utf8_encode2)
 {
 	char    *str;
 	int      str_len = 0, result_len = 0;
-	uint8_t *result;
+	char8_t *result;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
 		return;
@@ -683,9 +681,9 @@ PHP_FUNCTION(utf8_encode2)
    */
 PHP_FUNCTION(utf8_decode2)
 {
-	unsigned char *str;
-	char *result;
-	int   str_len = 0, result_len = 0;
+	char8_t *str;
+	char    *result;
+	int      str_len = 0, result_len = 0;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &str, &str_len) == FAILURE) {
 		return;

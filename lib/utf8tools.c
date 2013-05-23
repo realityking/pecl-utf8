@@ -10,7 +10,7 @@
 #define UTF8_ACCEPT 0
 #define UTF8_REJECT 12
 
-static const uint8_t utf8d[] = {
+static const char8_t utf8d[] = {
 	/*
 	 * The first part of the table maps bytes to character classes that
 	 * to reduce the size of the transition table and create bitmasks.
@@ -49,7 +49,7 @@ decode(uint32_t *state, uint32_t *codep, uint32_t byte)
 }
 
 size_t
-utf8_strlen(const uint8_t *s, zend_bool *valid)
+utf8_strlen(const char8_t *s, zend_bool *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
@@ -70,16 +70,16 @@ utf8_strlen(const uint8_t *s, zend_bool *valid)
 #define UTF8_BOM "\xEF\xBB\xBF" /* note that it need to be casted to uint8_t* */
 
 zend_bool
-utf8_has_bom(const uint8_t *s, int str_len)
+utf8_has_bom(const char8_t *s, int str_len)
 {
-	uint8_t maybe_bom[4];
+	char8_t maybe_bom[4];
 
 	if (str_len <= 2)
 		return 0;
 
 	strncpy((char*)maybe_bom, (char*)s, 3);
 	maybe_bom[3] = 0;
-	if (strcmp((char*)maybe_bom, (char*)(uint8_t*)UTF8_BOM) == 0)
+	if (strcmp((char*)maybe_bom, (char*)(char8_t*)UTF8_BOM) == 0)
 		return 1;
 	else
 		return 0;
@@ -89,35 +89,35 @@ utf8_has_bom(const uint8_t *s, int str_len)
  * Author: Mikko Lehtonen
  * See: https://github.com/scoopr/wtf8/blob/master/wtf8.h
  */
-static inline char* utf8_encode(uint32_t codepoint, char *str, int *len)
+static inline char8_t* utf8_encode(uint32_t codepoint, const char8_t *str, int *len)
 {
-	unsigned char *ustr = (unsigned char*)str;
+	char8_t *ustr = (char8_t*)str;
 	*len = 0;
 	if (codepoint <= 0x7f) {
-		ustr[0] = (unsigned char)codepoint;
+		ustr[0] = (char8_t)codepoint;
 		ustr += 1;
 		*len = 1;
 	} else if (codepoint <= 0x7ff ) {
-		ustr[0] = (unsigned char) (0xc0 + (codepoint >> 6));
-		ustr[1] = (unsigned char) (0x80 + (codepoint & 0x3f));
+		ustr[0] = (char8_t) (0xc0 + (codepoint >> 6));
+		ustr[1] = (char8_t) (0x80 + (codepoint & 0x3f));
 		ustr += 2;
 		*len = 2;
 	} else if (codepoint <= 0xffff) {
-		ustr[0] = (unsigned char) (0xe0 + (codepoint >> 12));
-		ustr[1] = (unsigned char) (0x80 + ((codepoint >> 6) & 63));
-		ustr[2] = (unsigned char) (0x80 + (codepoint & 63));
+		ustr[0] = (char8_t) (0xe0 + (codepoint >> 12));
+		ustr[1] = (char8_t) (0x80 + ((codepoint >> 6) & 63));
+		ustr[2] = (char8_t) (0x80 + (codepoint & 63));
 		ustr += 3;
 		*len = 3;
 	} else if (codepoint <= 0x1ffff) {
-		ustr[0] = (unsigned char) (0xf0 + (codepoint >> 18));
-		ustr[1] = (unsigned char) (0x80 + ((codepoint >> 12) & 0x3f));
-		ustr[2] = (unsigned char) (0x80 + ((codepoint >> 6) & 0x3f));
-		ustr[3] = (unsigned char) (0x80 + (codepoint & 0x3f));
+		ustr[0] = (char8_t) (0xf0 + (codepoint >> 18));
+		ustr[1] = (char8_t) (0x80 + ((codepoint >> 12) & 0x3f));
+		ustr[2] = (char8_t) (0x80 + ((codepoint >> 6) & 0x3f));
+		ustr[3] = (char8_t) (0x80 + (codepoint & 0x3f));
 		ustr += 4;
 		*len = 4;
 	}
 
-	return (char*)ustr;
+	return (char8_t*)ustr;
 }
 
 /*
@@ -125,7 +125,7 @@ static inline char* utf8_encode(uint32_t codepoint, char *str, int *len)
  * License: PHP License 3.01
  */
 zend_bool
-utf8_is_valid(const uint8_t *s, int length_bytes)
+utf8_is_valid(const char8_t *s, int length_bytes)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
@@ -141,15 +141,14 @@ utf8_is_valid(const uint8_t *s, int length_bytes)
 	return state == UTF8_ACCEPT;
 }
 
-char*
-utf8_substr(const uint8_t *s, int start, int len, zend_bool *valid)
+char8_t*
+utf8_substr(const char8_t *s, int start, int len, zend_bool *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
-	int start_bytes = 0;
-	int length_bytes = 0;
-	const uint8_t *str_start = s;
-	char *out;
+	int      start_bytes = 0, length_bytes = 0;
+	const char8_t *str_start = s;
+	char8_t *out;
 
 	for (int count = 0; *s; ++s) {
 		if (count == start) {
@@ -181,7 +180,7 @@ utf8_substr(const uint8_t *s, int start, int len, zend_bool *valid)
 }
 
 uint32_t
-utf8_ord(const uint8_t *s, zend_bool *valid)
+utf8_ord(const char8_t *s, zend_bool *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
@@ -196,7 +195,7 @@ utf8_ord(const uint8_t *s, zend_bool *valid)
 }
 
 int
-utf8_get_next_n_chars_length(const uint8_t *s, int n, zend_bool *valid)
+utf8_get_next_n_chars_length(const char8_t *s, int n, zend_bool *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
@@ -217,13 +216,13 @@ utf8_get_next_n_chars_length(const uint8_t *s, int n, zend_bool *valid)
 	return bytes;
 }
 
-char*
+char8_t*
 utf8_char_from_codepoint(uint32_t codepoint)
 {
-	char *out, *begin;
-	int len;
+	char8_t *out, *begin;
+	int      len;
 
-	out = emalloc(5);
+	out = (char8_t*) emalloc(5);
 	begin = out;
 	out = utf8_encode(codepoint, out, &len);
 	out[0] = '\0';
@@ -231,16 +230,16 @@ utf8_char_from_codepoint(uint32_t codepoint)
 	return begin;
 }
 
-char*
-utf8_recover(const uint8_t *s, int length_bytes, int *result_len)
+char8_t*
+utf8_recover(const char8_t *s, int length_bytes, int *result_len)
 {
 	uint32_t codepoint;
 	uint32_t prev, current;
 	int      i, len;
-	char    *out, *begin;
+	char8_t *out, *begin;
 
 	/* There's probably a way to save some memory here */
-	out = (char*) emalloc(3 * length_bytes);
+	out = (char8_t*) emalloc(3 * length_bytes);
 	begin = out;
 
 	for (prev = 0, current = 0, i = 0; i <= length_bytes; prev = current, s++, i++) {
@@ -268,14 +267,14 @@ utf8_recover(const uint8_t *s, int length_bytes, int *result_len)
 
 	out[0] = '\0';
 
-	*result_len = strlen(begin);
-	begin = (char*) erealloc(begin, (*result_len + 1));
+	*result_len = strlen((char*)begin);
+	begin = (char8_t*) erealloc(begin, (*result_len + 1));
 
 	return begin;
 }
 
 size_t
-utf8_strlen_maxbytes(const uint8_t *s, long max_bytes, zend_bool *valid)
+utf8_strlen_maxbytes(const char8_t *s, long max_bytes, zend_bool *valid)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
@@ -304,15 +303,15 @@ static const uint32_t windows1252Codepoint[] = {
 };
 
 void
-windows1252_to_utf8(const char *str, int str_len, uint8_t **result_str, int *result_len)
+windows1252_to_utf8(const char *str, int str_len, char8_t **result_str, int *result_len)
 {
-	uint8_t *result, *begin;
+	char8_t *result, *begin;
 	uint32_t codepoint;
-	int codepoint_len;
+	int      codepoint_len;
 	unsigned char *ustr = (unsigned char*)str;
 
 	*result_len = 0;
-	result = (uint8_t*) emalloc((3 * str_len + 1));
+	result = (char8_t*) emalloc((3 * str_len + 1));
 	begin = result;
 
 	while (*ustr) {
@@ -323,7 +322,7 @@ windows1252_to_utf8(const char *str, int str_len, uint8_t **result_str, int *res
 			// These are undefined so we just do nothing.
 		} else if (*ustr < 0xa0) {
 			codepoint = windows1252Codepoint[*ustr - 0x80];
-			result = (uint8_t*) utf8_encode(codepoint, (char*) result, &codepoint_len);
+			result = utf8_encode(codepoint, result, &codepoint_len);
 			*result_len += codepoint_len;
 		} else {
 			*result++ = 0xc2 + (*ustr > 0xbf);
@@ -335,7 +334,7 @@ windows1252_to_utf8(const char *str, int str_len, uint8_t **result_str, int *res
 	*result = '\0';
 
 	if (*result_len != str_len) {
-		begin = (uint8_t*) erealloc(begin, (*result_len + 1));
+		begin = (char8_t*) erealloc(begin, (*result_len + 1));
 	}
 
 	*result_str = begin;
@@ -409,20 +408,20 @@ static inline unsigned char to_windows1252(uint32_t codepoint)
 }
 
 void
-utf8_to_windows1252(const uint8_t *str, int str_len, char **result_str, int *result_len)
+utf8_to_windows1252(const char8_t *str, int str_len, char **result_str, int *result_len)
 {
 	uint32_t codepoint;
 	uint32_t state = UTF8_ACCEPT;
-	unsigned char *result, *begin;
+	char    *result, *begin;
 
 	*result_len = 0;
-	result = (unsigned char*) emalloc((str_len + 1));
+	result = (char*) emalloc((str_len + 1));
 	begin = result;
 
 	for (; *str; ++str) {
 		if (!decode(&state, &codepoint, *str)) {
 			if (codepoint <= 0x7f || (codepoint >= 0xa0 && codepoint <= 0xff)) {
-				*result++ = (unsigned char) codepoint;
+				*result++ = (char8_t) codepoint;
 				*result_len += 1;
 			} else {
 				*result++ = to_windows1252(codepoint);
@@ -439,7 +438,7 @@ utf8_to_windows1252(const uint8_t *str, int str_len, char **result_str, int *res
 	*result = '\0';
 
 	if (*result_len != str_len) {
-		begin = (unsigned char*) erealloc(begin, (*result_len + 1));
+		begin = (char*) erealloc(begin, (*result_len + 1));
 	}
 
 	*result_str = (char*) begin;
