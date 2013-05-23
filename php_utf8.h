@@ -49,10 +49,6 @@ extern zend_module_entry utf8_module_entry;
 #define PHP_UTF8_API
 #endif
 
-PHP_MINIT_FUNCTION(utf8);
-PHP_MSHUTDOWN_FUNCTION(utf8);
-PHP_RINIT_FUNCTION(utf8);
-PHP_RSHUTDOWN_FUNCTION(utf8);
 PHP_MINFO_FUNCTION(utf8);
 
 #ifdef ZTS
