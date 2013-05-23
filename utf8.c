@@ -82,7 +82,7 @@ static int utf8_needle_char(zval *needle, char8_t **target TSRMLS_DC)
 			*target = utf8_char_from_codepoint((uint32_t)Z_LVAL_P(needle));
 			return SUCCESS;
 		case IS_NULL:
-			*target = ecalloc(1, 1);
+			*target = emalloc(1);
 			*target[0] = '\0';
 			return SUCCESS;
 		case IS_DOUBLE:
