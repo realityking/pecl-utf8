@@ -200,7 +200,17 @@ UTF8_API char8_t*
 utf8_char_from_codepoint(uint32_t codepoint)
 {
 	char8_t *out, *begin;
-	int      len;
+	int      len, size;
+
+	if (codepoint <= 0x7f) {
+		size = 2;
+	} else if (codepoint <= 0x7ff ) {
+		size = 3;
+	} else if (codepoint <= 0xffff) {
+		size = 4;
+	} else if (codepoint <= 0x1ffff) {
+		size = 5;
+	}
 
 	out = (char8_t*) emalloc(5);
 	begin = out;
