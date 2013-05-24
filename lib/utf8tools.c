@@ -130,7 +130,8 @@ utf8_substr(const char8_t *s, int start, int len, zend_bool *valid)
 	const char8_t *str_start = s;
 	char8_t *out;
 
-	for (int count = 0; *s; ++s) {
+	int count;
+	for (count = 0; *s; ++s) {
 		if (count == start) {
 			break;
 		}
@@ -140,7 +141,7 @@ utf8_substr(const char8_t *s, int start, int len, zend_bool *valid)
 		start_bytes += 1;
 	}
 
-	for (int count = 0; *s; ++s) {
+	for (count = 0; *s; ++s) {
 		if (count == len) {
 			break;
 		}
@@ -181,7 +182,8 @@ utf8_get_next_n_chars_length(const char8_t *s, int n, zend_bool *valid)
 	uint32_t state = UTF8_ACCEPT;
 	int      bytes = 0;
 
-	for (int count = 0; *s; ++s) {
+	int count;
+	for (count = 0; *s; ++s) {
 		if (count == n) {
 			break;
 		}
